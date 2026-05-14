@@ -1,45 +1,83 @@
 """
 Garmin Badge & Challenge Fetcher
-Scarica badge guadagnati e sfide mensili da Garmin Connect,
-salvandoli in JSON per la dashboard su Netlify.
+Scarica badge e sfide mensili da Garmin Connect.
+Usa un token pre-generato (GARMIN_TOKEN) per evitare
+il rate limit sugli IP di GitHub Actions.
 """
 
 import json
 import os
+import base64
+import tempfile
+import shutil
 from datetime import datetime
+
+import garth
 from garminconnect import Garmin
 
-# Credenziali dalle variabili d'ambiente di GitHub Actions
 EMAIL = os.getenv("GARMIN_EMAIL")
 PASSWORD = os.getenv("GARMIN_PASSWORD")
+TOKEN_B64 = os.getenv("GARMIN_TOKEN")
 
-# Percorso per salvare/ripristinare il token di sessione
-TOKEN_DIR = os.path.expanduser("~/.garth")
+
+def restore_token():
+    """Decodifica il token base64 e lo salva su disco."""
+    if not TOKEN_B64:
+        return None
+
+    token_dir = os.path.join(tempfile.gettempdir(), "garth_session")
+    if os.path.exists(token_dir):
+        shutil.rmtree(token_dir)
+    os.makedirs(token_dir)
+
+    try:
+        token_json = base64.b64decode(TOKEN_B64).decode()
+        token_data = json.loads(token_json)
+
+        for filename, content in token_data.items():
+            filepath = os.path.join(token_dir, filename)
+            with open(filepath, "w", encoding="utf-8") as f:
+                f.write(content)
+
+        print(f"Token ripristinato: {list(token_data.keys())}")
+        return token_dir
+
+    except Exception as e:
+        print(f"Errore nel ripristino token: {e}")
+        return None
 
 
 def get_client():
     """
-    Crea un client Garmin con gestione del token.
-    Prima prova a ripristinare una sessione salvata,
-    se fallisce fa login con email e password.
+    Crea un client Garmin autenticato.
+    1. Prova con il token salvato (garth.resume)
+    2. Fallback: login diretto con email/password
     """
-    client = Garmin(EMAIL, PASSWORD)
-
-    # Prova a ripristinare la sessione precedente
-    if os.path.exists(TOKEN_DIR):
+    # Strategia 1: token
+    token_dir = restore_token()
+    if token_dir:
         try:
-            client.login(TOKEN_DIR)
-            print("Sessione ripristinata dal token salvato.")
+            garth.resume(token_dir)
+            client = Garmin()
+            client.login(token_dir)
+            print("Autenticazione con token riuscita.")
             return client
-        except Exception:
-            print("Token scaduto, nuovo login in corso...")
+        except Exception as e:
+            print(f"Token non valido: {e}")
+            print("Rigenera il token con genera_token.py sul tuo PC.")
 
-    # Login fresco con credenziali
-    client.login()
-    # Salva il token per le prossime esecuzioni
-    client.garth.dump(TOKEN_DIR)
-    print("Login effettuato e token salvato.")
-    return client
+    # Strategia 2: login diretto
+    if EMAIL and PASSWORD:
+        print("Tentativo login diretto...")
+        try:
+            client = Garmin(EMAIL, PASSWORD)
+            client.login()
+            print("Login diretto riuscito.")
+            return client
+        except Exception as e:
+            print(f"Login diretto fallito: {e}")
+
+    raise RuntimeError("Impossibile autenticarsi. Configura il secret GARMIN_TOKEN.")
 
 
 def fetch_badges(client):
@@ -47,20 +85,16 @@ def fetch_badges(client):
     try:
         all_badges = client.get_badges()
         earned = [b for b in all_badges if b.get("badgeEarnedDate") is not None]
-        print(f"Badge guadagnati: {len(earned)} su {len(all_badges)} totali.")
+        print(f"Badge: {len(earned)} guadagnati su {len(all_badges)} totali.")
         return earned
     except Exception as e:
-        print(f"Errore nel recupero badge: {e}")
+        print(f"Errore badge: {e}")
         return []
 
 
 def fetch_challenges(client):
-    """
-    Recupera le sfide (challenges) mensili.
-    Usa l'endpoint interno di Garmin Connect.
-    """
+    """Recupera le sfide mensili (attive e completate)."""
     try:
-        # Sfide a cui sei iscritto (attive e completate)
         enrolled = client.connectapi(
             "/badgechallenge-service/badgeChallenge/enrolled"
         )
@@ -77,30 +111,26 @@ def fetch_challenges(client):
                 "challengeTarget": c.get("challengeTarget", 0),
                 "currentValue": c.get("currentValue", 0),
                 "statusType": c.get("challengeStatusType", "ACTIVE"),
-                # COMPLETED = obiettivo raggiunto, ACTIVE = in corso
             })
 
         completate = sum(1 for c in challenges if c["statusType"] == "COMPLETED")
-        print(f"Sfide trovate: {len(challenges)} ({completate} completate).")
+        print(f"Sfide: {len(challenges)} trovate ({completate} completate).")
         return challenges
 
     except Exception as e:
-        print(f"Errore nel recupero sfide: {e}")
-        print("(L'endpoint potrebbe non essere disponibile per il tuo account)")
+        print(f"Errore sfide: {e}")
         return []
 
 
 def main():
-    if not EMAIL or not PASSWORD:
-        print("ERRORE: Variabili GARMIN_EMAIL e GARMIN_PASSWORD non impostate!")
-        return
+    if not TOKEN_B64 and not (EMAIL and PASSWORD):
+        print("ERRORE: Nessuna credenziale configurata!")
+        raise SystemExit(1)
 
     client = get_client()
-
     badges = fetch_badges(client)
     challenges = fetch_challenges(client)
 
-    # Crea un unico file JSON con timestamp
     output = {
         "lastUpdated": datetime.utcnow().isoformat() + "Z",
         "badges": badges,
@@ -110,7 +140,7 @@ def main():
     with open("badges.json", "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
 
-    print(f"File badges.json aggiornato alle {output['lastUpdated']}")
+    print(f"\nbadges.json aggiornato: {len(badges)} badge, {len(challenges)} sfide.")
 
 
 if __name__ == "__main__":
