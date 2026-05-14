@@ -1,8 +1,6 @@
 """
 Garmin Badge & Challenge Fetcher
-Scarica badge e sfide mensili da Garmin Connect.
-Usa un token pre-generato (GARMIN_TOKEN) per evitare
-il rate limit sugli IP di GitHub Actions.
+Scarica badge guadagnati e sfide mensili da Garmin Connect.
 """
 
 import json
@@ -21,7 +19,7 @@ TOKEN_B64 = os.getenv("GARMIN_TOKEN")
 
 
 def restore_token():
-    """Decodifica il token base64 e lo salva su disco."""
+    """Decodifica il token base64 dal GitHub Secret."""
     if not TOKEN_B64:
         return None
 
@@ -48,12 +46,8 @@ def restore_token():
 
 
 def get_client():
-    """
-    Crea un client Garmin autenticato.
-    1. Prova con il token salvato (garth.resume)
-    2. Fallback: login diretto con email/password
-    """
-    # Strategia 1: token
+    """Crea un client Garmin autenticato."""
+    # Strategia 1: token pre-generato
     token_dir = restore_token()
     if token_dir:
         try:
@@ -64,11 +58,9 @@ def get_client():
             return client
         except Exception as e:
             print(f"Token non valido: {e}")
-            print("Rigenera il token con genera_token.py sul tuo PC.")
 
-    # Strategia 2: login diretto
+    # Strategia 2: login diretto (fallback)
     if EMAIL and PASSWORD:
-        print("Tentativo login diretto...")
         try:
             client = Garmin(EMAIL, PASSWORD)
             client.login()
@@ -77,15 +69,14 @@ def get_client():
         except Exception as e:
             print(f"Login diretto fallito: {e}")
 
-    raise RuntimeError("Impossibile autenticarsi. Configura il secret GARMIN_TOKEN.")
+    raise RuntimeError("Impossibile autenticarsi.")
 
 
 def fetch_badges(client):
-    """Recupera i badge guadagnati."""
+    """Recupera i badge guadagnati con get_earned_badges()."""
     try:
-        all_badges = client.get_badges()
-        earned = [b for b in all_badges if b.get("badgeEarnedDate") is not None]
-        print(f"Badge: {len(earned)} guadagnati su {len(all_badges)} totali.")
+        earned = client.get_earned_badges()
+        print(f"Badge guadagnati: {len(earned)}")
         return earned
     except Exception as e:
         print(f"Errore badge: {e}")
@@ -93,33 +84,104 @@ def fetch_badges(client):
 
 
 def fetch_challenges(client):
-    """Recupera le sfide mensili (attive e completate)."""
-    try:
-        enrolled = client.connectapi(
-            "/badgechallenge-service/badgeChallenge/enrolled"
-        )
+    """
+    Recupera le sfide mensili.
+    Le sfide sono badge "available" con date di inizio/fine
+    e valori di progresso (badgeProgressValue / badgeTargetValue).
+    """
+    challenges = []
 
-        challenges = []
-        for c in enrolled:
+    # 1. Badge challenges in corso
+    try:
+        available = client.get_available_badge_challenges()
+        print(f"Badge challenges disponibili: {len(available)}")
+        for c in available:
             challenges.append({
-                "challengeId": c.get("challengeId"),
-                "challengeName": c.get("challengeName", "Sfida senza nome"),
+                "challengeName": c.get("badgeChallengeName", c.get("badgeName", "Sfida")),
                 "challengeDescription": c.get("description", ""),
-                "imageUrl": c.get("badgeImageUrl", ""),
+                "imageUrl": c.get("badgeSmallImageUrl", c.get("badgeImageUrl", "")),
                 "startDate": c.get("startDate", ""),
                 "endDate": c.get("endDate", ""),
-                "challengeTarget": c.get("challengeTarget", 0),
-                "currentValue": c.get("currentValue", 0),
-                "statusType": c.get("challengeStatusType", "ACTIVE"),
+                "challengeTarget": c.get("badgeTargetValue", 0),
+                "currentValue": c.get("badgeProgressValue", 0),
+                "statusType": "ACTIVE",
             })
-
-        completate = sum(1 for c in challenges if c["statusType"] == "COMPLETED")
-        print(f"Sfide: {len(challenges)} trovate ({completate} completate).")
-        return challenges
-
     except Exception as e:
-        print(f"Errore sfide: {e}")
-        return []
+        print(f"Errore badge challenges: {e}")
+
+    # 2. Sfide virtuali in corso
+    try:
+        virtual = client.get_inprogress_virtual_challenges()
+        print(f"Sfide virtuali in corso: {len(virtual)}")
+        for c in virtual:
+            challenges.append({
+                "challengeName": c.get("challengeName", c.get("badgeName", "Sfida")),
+                "challengeDescription": c.get("description", ""),
+                "imageUrl": c.get("badgeSmallImageUrl", c.get("badgeImageUrl", "")),
+                "startDate": c.get("startDate", ""),
+                "endDate": c.get("endDate", ""),
+                "challengeTarget": c.get("badgeTargetValue", c.get("challengeTarget", 0)),
+                "currentValue": c.get("badgeProgressValue", c.get("currentValue", 0)),
+                "statusType": "ACTIVE",
+            })
+    except Exception as e:
+        print(f"Errore sfide virtuali: {e}")
+
+    # 3. Available badges che sono sfide mensili (hanno date e target)
+    try:
+        available_badges = client.get_available_badges()
+        monthly = [
+            b for b in available_badges
+            if b.get("badgeStartDate") and b.get("badgeTargetValue")
+        ]
+        print(f"Sfide mensili (da available badges): {len(monthly)}")
+        for c in monthly:
+            # Evita duplicati (stesso nome)
+            name = c.get("badgeName", "Sfida")
+            if not any(ch["challengeName"] == name for ch in challenges):
+                challenges.append({
+                    "challengeName": name,
+                    "challengeDescription": "",
+                    "imageUrl": c.get("badgeSmallImageUrl", c.get("badgeImageUrl", "")),
+                    "startDate": c.get("badgeStartDate", ""),
+                    "endDate": c.get("badgeEndDate", ""),
+                    "challengeTarget": c.get("badgeTargetValue", 0),
+                    "currentValue": c.get("badgeProgressValue", 0),
+                    "statusType": "ACTIVE",
+                })
+    except Exception as e:
+        print(f"Errore available badges: {e}")
+
+    # 4. Non-completed badge challenges
+    try:
+        non_completed = client.get_non_completed_badge_challenges()
+        print(f"Badge challenges non completate: {len(non_completed)}")
+        for c in non_completed:
+            name = c.get("badgeChallengeName", c.get("badgeName", "Sfida"))
+            if not any(ch["challengeName"] == name for ch in challenges):
+                challenges.append({
+                    "challengeName": name,
+                    "challengeDescription": c.get("description", ""),
+                    "imageUrl": c.get("badgeSmallImageUrl", c.get("badgeImageUrl", "")),
+                    "startDate": c.get("startDate", ""),
+                    "endDate": c.get("endDate", ""),
+                    "challengeTarget": c.get("badgeTargetValue", 0),
+                    "currentValue": c.get("badgeProgressValue", 0),
+                    "statusType": "ACTIVE",
+                })
+    except Exception as e:
+        print(f"Errore non-completed challenges: {e}")
+
+    # Segna come completate quelle al 100%
+    for ch in challenges:
+        target = ch.get("challengeTarget", 0)
+        current = ch.get("currentValue", 0)
+        if target and current and current >= target:
+            ch["statusType"] = "COMPLETED"
+
+    completate = sum(1 for c in challenges if c["statusType"] == "COMPLETED")
+    print(f"Sfide totali: {len(challenges)} ({completate} completate)")
+    return challenges
 
 
 def main():
