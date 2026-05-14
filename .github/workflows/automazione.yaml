@@ -1,0 +1,55 @@
+name: Update Garmin Badges
+
+on:
+  schedule:
+    # Esegue ogni notte alle 2:00 UTC (le 3:00 o 4:00 italiane)
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    # Permette di lanciarlo a mano dal tab "Actions" di GitHub
+
+jobs:
+  update-badges:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Scarica il codice del repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Installa Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # 3. Installa le dipendenze
+      - name: Install dependencies
+        run: pip install garminconnect
+
+      # 4. Ripristina il token Garmin dalla cache (evita login ripetuti)
+      - name: Restore Garmin token cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.garth
+          key: garmin-token-${{ github.repository }}
+
+      # 5. Esegue lo script Python
+      - name: Run badge fetcher
+        env:
+          GARMIN_EMAIL: ${{ secrets.GARMIN_EMAIL }}
+          GARMIN_PASSWORD: ${{ secrets.GARMIN_PASSWORD }}
+        run: python get_badges.py
+
+      # 6. Commit e push SOLO se badges.json è cambiato
+      - name: Commit changes (if any)
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git add badges.json
+          # --porcelain restituisce output vuoto se niente è cambiato
+          if git diff --cached --quiet; then
+            echo "Nessuna modifica, skip commit."
+          else
+            git commit -m "🏅 Aggiornamento badge e sfide Garmin"
+            git push
+          fi
