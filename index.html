@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garmin — Badge & Sfide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=Outfit:wght@600;800&display=swap" rel="stylesheet">
+    <style>
+        /* ── Reset & Variabili ── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #0c0f14;
+            --surface: #151921;
+            --surface-hover: #1c2230;
+            --border: #232a38;
+            --text: #e8eaf0;
+            --text-dim: #7a8299;
+            --accent: #3ddba9;
+            --accent-glow: rgba(61, 219, 169, 0.25);
+            --gold: #f5c842;
+            --gold-glow: rgba(245, 200, 66, 0.2);
+            --progress-bg: #232a38;
+            --radius: 14px;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.5;
+        }
+
+        /* ── Sfondo con sottile griglia ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 20% 20%, rgba(61,219,169,0.04) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(245,200,66,0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── Layout ── */
+        .wrapper {
+            position: relative;
+            z-index: 1;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 48px 24px 80px;
+        }
+
+        /* ── Header ── */
+        header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        header p {
+            color: var(--text-dim);
+            margin-top: 8px;
+            font-size: 0.95rem;
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        .stat-value.gold { color: var(--gold); }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-top: 2px;
+        }
+
+        /* ── Sezioni ── */
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1.4rem;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title .icon {
+            font-size: 1.3rem;
+        }
+
+        section {
+            margin-bottom: 56px;
+        }
+
+        /* ── Griglia Badge ── */
+        .badge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 16px;
+        }
+
+        .badge-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px 12px 16px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+            cursor: default;
+        }
+
+        .badge-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+            box-shadow: 0 8px 32px var(--accent-glow);
+        }
+
+        .badge-card img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 10px;
+            drop-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .badge-card .name {
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--text);
+            display: block;
+            line-height: 1.3;
+        }
+
+        .badge-card .date {
+            font-size: 0.68rem;
+            color: var(--text-dim);
+            margin-top: 4px;
+        }
+
+        /* ── Griglia Sfide ── */
+        .challenge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .challenge-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+
+        /* ── EFFETTO CHIAVE: bianco e nero → colore ── */
+        .challenge-card.active img {
+            filter: grayscale(100%) brightness(0.7);
+            opacity: 0.6;
+            transition: filter 0.4s, opacity 0.4s;
+        }
+
+        .challenge-card.active:hover img {
+            filter: grayscale(50%) brightness(0.85);
+            opacity: 0.8;
+        }
+
+        .challenge-card.completed {
+            border-color: var(--gold);
+        }
+
+        .challenge-card.completed:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 32px var(--gold-glow);
+        }
+
+        .challenge-card.completed img {
+            filter: none;
+            opacity: 1;
+            /* Leggero bagliore dorato per le sfide completate */
+            drop-shadow: 0 0 12px var(--gold-glow);
+        }
+
+        .challenge-card img {
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+            flex-shrink: 0;
+            border-radius: 10px;
+        }
+
+        .challenge-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .challenge-info .name {
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .challenge-info .desc {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            margin-bottom: 10px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* ── Barra di progresso ── */
+        .progress-bar {
+            height: 6px;
+            background: var(--progress-bg);
+            border-radius: 3px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--gold));
+            transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .progress-label {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            margin-top: 4px;
+            text-align: right;
+        }
+
+        .challenge-card.completed .progress-fill {
+            background: var(--gold);
+        }
+
+        .challenge-card.completed .status-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--bg);
+            background: var(--gold);
+            padding: 2px 8px;
+            border-radius: 6px;
+            margin-top: 4px;
+        }
+
+        /* ── Loading / Empty ── */
+        .loading, .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-dim);
+        }
+
+        .loading .spinner {
+            width: 32px;
+            height: 32px;
+            border: 3px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 16px;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .empty-state .icon { font-size: 2rem; margin-bottom: 8px; }
+
+        /* ── Footer ── */
+        footer {
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.75rem;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+
+        /* ── Animazione di ingresso ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .badge-card, .challenge-card {
+            animation: fadeUp 0.4s ease both;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 600px) {
+            .wrapper { padding: 32px 16px 60px; }
+            .badge-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 10px; }
+            .challenge-grid { grid-template-columns: 1fr; }
+            .stats-row { gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>Garmin Trophies</h1>
+            <p>Badge guadagnati e sfide mensili</p>
+            <div class="stats-row" id="stats" style="display:none;">
+                <div class="stat">
+                    <div class="stat-value" id="badge-count">0</div>
+                    <div class="stat-label">Badge</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value gold" id="challenge-done">0</div>
+                    <div class="stat-label">Sfide Completate</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="challenge-active">0</div>
+                    <div class="stat-label">Sfide in Corso</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Sfide mensili -->
+        <section id="challenges-section" style="display:none;">
+            <h2 class="section-title"><span class="icon">⚔️</span> Sfide del Mese</h2>
+            <div id="challenges" class="challenge-grid"></div>
+        </section>
+
+        <!-- Badge -->
+        <section>
+            <h2 class="section-title"><span class="icon">🏅</span> Badge Guadagnati</h2>
+            <div id="badges" class="badge-grid">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Caricamento badge...</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Ultimo aggiornamento: <span id="last-updated">—</span></p>
+            <p style="margin-top: 4px;">Dati da Garmin Connect · Aggiornamento automatico ogni notte</p>
+        </footer>
+    </div>
+
+    <script>
+        async function loadData() {
+            const badgesContainer = document.getElementById('badges');
+            const challengesContainer = document.getElementById('challenges');
+
+            try {
+                const response = await fetch('badges.json');
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const data = await response.json();
+
+                // ── Timestamp ──
+                if (data.lastUpdated) {
+                    const d = new Date(data.lastUpdated);
+                    document.getElementById('last-updated').textContent =
+                        d.toLocaleDateString('it-IT', {
+                            day: 'numeric', month: 'long', year: 'numeric',
+                            hour: '2-digit', minute: '2-digit'
+                        });
+                }
+
+                // ── Badge ──
+                const badges = data.badges || data; // Compatibile col vecchio formato
+                badgesContainer.innerHTML = '';
+
+                if (badges.length === 0) {
+                    badgesContainer.innerHTML =
+                        '<div class="empty-state"><div class="icon">🏃</div><p>Nessun badge ancora — continua ad allenarti!</p></div>';
+                } else {
+                    // Ordina per data (più recenti prima)
+                    badges.sort((a, b) =>
+                        (b.badgeEarnedDate || '').localeCompare(a.badgeEarnedDate || '')
+                    );
+
+                    badges.forEach((badge, i) => {
+                        const card = document.createElement('div');
+                        card.className = 'badge-card';
+                        card.style.animationDelay = `${Math.min(i * 0.04, 1)}s`;
+
+                        const imgUrl = badge.badgeImageUrl || badge.badgeFullImageUrl || '';
+                        const name = badge.badgeName || 'Badge';
+                        let dateStr = '';
+                        if (badge.badgeEarnedDate) {
+                            const d = new Date(badge.badgeEarnedDate);
+                            dateStr = d.toLocaleDateString('it-IT', {
+                                day: 'numeric', month: 'short', year: 'numeric'
+                            });
+                        }
+
+                        card.innerHTML = `
+                            <img src="${imgUrl}" alt="${name}" loading="lazy"
+                                 onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 80 80%22><rect fill=%22%23232a38%22 width=%2280%22 height=%2280%22 rx=%2210%22/><text x=%2240%22 y=%2248%22 text-anchor=%22middle%22 font-size=%2228%22>🏅</text></svg>'">
+                            <span class="name">${name}</span>
+                            ${dateStr ? `<span class="date">${dateStr}</span>` : ''}
+                        `;
+                        badgesContainer.appendChild(card);
+                    });
+                }
+
+                // ── Sfide ──
+                const challenges = data.challenges || [];
+
+                if (challenges.length > 0) {
+                    document.getElementById('challenges-section').style.display = '';
+
+                    // Prima le completate, poi le attive
+                    challenges.sort((a, b) => {
+                        if (a.statusType === 'COMPLETED' && b.statusType !== 'COMPLETED') return -1;
+                        if (a.statusType !== 'COMPLETED' && b.statusType === 'COMPLETED') return 1;
+                        return 0;
+                    });
+
+                    challenges.forEach((ch, i) => {
+                        const isCompleted = ch.statusType === 'COMPLETED';
+                        const card = document.createElement('div');
+                        card.className = `challenge-card ${isCompleted ? 'completed' : 'active'}`;
+                        card.style.animationDelay = `${i * 0.06}s`;
+
+                        const target = ch.challengeTarget || 1;
+                        const current = ch.currentValue || 0;
+                        const pct = Math.min((current / target) * 100, 100);
+
+                        const imgUrl = ch.imageUrl || '';
+
+                        card.innerHTML = `
+                            <img src="${imgUrl}" alt="${ch.challengeName}" loading="lazy"
+                                 onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect fill=%22%23232a38%22 width=%2264%22 height=%2264%22 rx=%2210%22/><text x=%2232%22 y=%2240%22 text-anchor=%22middle%22 font-size=%2224%22>⚔️</text></svg>'">
+                            <div class="challenge-info">
+                                <div class="name">${ch.challengeName}</div>
+                                ${ch.challengeDescription ? `<div class="desc">${ch.challengeDescription}</div>` : ''}
+                                ${isCompleted
+                                    ? '<span class="status-tag">✓ Completata</span>'
+                                    : `<div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+                                       <div class="progress-label">${Math.round(pct)}%</div>`
+                                }
+                            </div>
+                        `;
+                        challengesContainer.appendChild(card);
+                    });
+
+                    // Stats
+                    const done = challenges.filter(c => c.statusType === 'COMPLETED').length;
+                    document.getElementById('challenge-done').textContent = done;
+                    document.getElementById('challenge-active').textContent = challenges.length - done;
+                }
+
+                // Stats globali
+                document.getElementById('badge-count').textContent = badges.length;
+                document.getElementById('stats').style.display = '';
+
+            } catch (error) {
+                console.error('Errore:', error);
+                badgesContainer.innerHTML =
+                    '<div class="empty-state"><div class="icon">⚠️</div><p>Impossibile caricare i dati.<br>Controlla che badges.json sia presente.</p></div>';
+            }
+        }
+
+        loadData();
+    </script>
+</body>
+</html>
