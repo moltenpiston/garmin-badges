@@ -416,7 +416,7 @@
                         card.className = 'badge-card';
                         card.style.animationDelay = `${Math.min(i * 0.04, 1)}s`;
 
-                        const imgUrl = badge.badgeImageUrl || badge.badgeFullImageUrl || '';
+                        const imgUrl = badge.badgeSmallImageUrl || badge.badgeImageUrl || badge.badgeFullImageUrl || '';
                         const name = badge.badgeName || 'Badge';
                         let dateStr = '';
                         if (badge.badgeEarnedDate) {
