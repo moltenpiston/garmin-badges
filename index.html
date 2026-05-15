@@ -409,41 +409,23 @@
     <script>
         // ── Utilità ──
 
-        const UNIT_MAP = {
-            1: 'm',      // metri → mostriamo in km
-            2: 's',      // secondi → mostriamo in ore/minuti
-            3: 'cal',
-            4: 'giorni',
-            5: 'attività',
-            6: 'like',
-            7: 'passi',
-        };
+        /*
+         * Mappa unità Garmin (da debug API):
+         *   1 = metri (distanza) → mostriamo in km
+         *   2 = metri (dislivello) → mostriamo in m
+         *   3 = attività (conteggio)
+         *   4 = giorni
+         *   7 = secondi → mostriamo in ore/minuti
+         *   null = conteggio generico
+         */
 
-        function formatValue(value, unitId) {
-            if (!value && value !== 0) return '0';
-            const v = parseFloat(value);
-
-            switch (unitId) {
-                case 1: // metri → km
-                    return (v >= 1000) ? (v / 1000).toFixed(1) + ' km' : v.toFixed(0) + ' m';
-                case 2: // secondi → ore/minuti
-                    if (v >= 3600) {
-                        const h = Math.floor(v / 3600);
-                        const m = Math.floor((v % 3600) / 60);
-                        return m > 0 ? `${h}h ${m}m` : `${h}h`;
-                    }
-                    return Math.floor(v / 60) + 'm';
-                case 3: // calorie
-                    return v.toLocaleString('it-IT') + ' cal';
-                case 4: // giorni
-                    return v.toFixed(0) + ' di ' + v.toFixed(0) + ' giorni';
-                case 7: // passi
-                    return v >= 1000
-                        ? (v / 1000).toFixed(v >= 10000 ? 0 : 1) + 'K passi'
-                        : v.toFixed(0) + ' passi';
-                default:
-                    return v % 1 === 0 ? v.toFixed(0) : v.toFixed(1);
+        function formatSeconds(v) {
+            if (v >= 3600) {
+                const h = Math.floor(v / 3600);
+                const m = Math.floor((v % 3600) / 60);
+                return m > 0 ? `${h}h ${m}m` : `${h}h`;
             }
+            return Math.floor(v / 60) + 'm';
         }
 
         function formatProgress(current, target, unitId) {
@@ -451,32 +433,24 @@
             const t = parseFloat(target) || 1;
 
             switch (unitId) {
-                case 1: // metri → km
+                case 1: // metri (distanza) → km
                     if (t >= 1000) {
                         return `${(c/1000).toFixed(1)} di ${(t/1000).toFixed(1)} km`;
                     }
                     return `${c.toFixed(0)} di ${t.toFixed(0)} m`;
-                case 2: // secondi → ore
-                    const ch = Math.floor(c / 3600), cm = Math.floor((c % 3600) / 60);
-                    const th = Math.floor(t / 3600), tm = Math.floor((t % 3600) / 60);
-                    const cStr = cm > 0 ? `${ch}h ${cm}m` : `${ch}h`;
-                    const tStr = tm > 0 ? `${th}h ${tm}m` : `${th}h`;
-                    return `${cStr} di ${tStr}`;
-                case 3:
-                    return `${c.toLocaleString('it-IT')} di ${t.toLocaleString('it-IT')} calorie attive`;
-                case 4:
-                    return `${c.toFixed(0)} di ${t.toFixed(0)} giorni`;
-                case 5:
+                case 2: // metri (dislivello)
+                    return `${c.toLocaleString('it-IT')} di ${t.toLocaleString('it-IT')} m`;
+                case 3: // attività
                     return `${c.toFixed(0)} di ${t.toFixed(0)} attività`;
-                case 6:
-                    return `${c.toFixed(0)} di ${t.toFixed(0)} like`;
-                case 7:
-                    if (t >= 1000) {
-                        return `${c.toLocaleString('it-IT')} di ${t.toLocaleString('it-IT')} passi`;
-                    }
-                    return `${c.toFixed(0)} di ${t.toFixed(0)} passi`;
+                case 4: // giorni
+                    return `${c.toFixed(0)} di ${t.toFixed(0)} giorni`;
+                case 7: { // secondi → ore/minuti
+                    const cStr = formatSeconds(c);
+                    const tStr = formatSeconds(t);
+                    return `${cStr} di ${tStr}`;
+                }
                 default:
-                    return `${c.toFixed(c % 1 ? 1 : 0)} di ${t.toFixed(t % 1 ? 1 : 0)} obiettivi raggiunti`;
+                    return `${c.toFixed(c % 1 ? 1 : 0)} di ${t.toFixed(t % 1 ? 1 : 0)}`;
             }
         }
 
