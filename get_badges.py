@@ -1,12 +1,12 @@
 """
-Garmin Badge & Challenge Fetcher — Versione definitiva
+Garmin Badge & Challenge Fetcher — Versione corretta
 Scarica badge guadagnati e sfide mensili da Garmin Connect.
 
 Logica sfide:
-  - get_available_badges() → catalogo sfide con target (ma senza progresso)
-  - get_in_progress_badges() → sfide in corso con progresso reale
-  - get_earned_badges() → sfide completate
-  I dati vengono incrociati per badgeId per avere il quadro completo.
+  - get_non_completed_badge_challenges(1, limit) → sfide ATTIVE con progresso reale
+  - get_badge_challenges(1, limit) → tutte le sfide (per quelle completate)
+  - get_available_badges() → sfide disponibili non iscritte
+  I dati vengono uniti evitando duplicati.
 """
 
 import json
@@ -23,7 +23,6 @@ EMAIL = os.getenv("GARMIN_EMAIL")
 PASSWORD = os.getenv("GARMIN_PASSWORD")
 TOKEN_B64 = os.getenv("GARMIN_TOKEN")
 
-# URL base per le immagini dei badge Garmin
 BADGE_IMG_URL = "https://connect.garmin.com/images/badges/xxhdpi/badge_{uuid}_lrg.png"
 
 
@@ -40,7 +39,6 @@ def restore_token():
         for filename, content in token_data.items():
             with open(os.path.join(token_dir, filename), "w", encoding="utf-8") as f:
                 f.write(content)
-        print(f"Token ripristinato: {list(token_data.keys())}")
         return token_dir
     except Exception as e:
         print(f"Errore token: {e}")
@@ -71,44 +69,28 @@ def get_client():
     raise RuntimeError("Impossibile autenticarsi.")
 
 
-def format_badge(b):
-    """Formatta un badge earned per il JSON output."""
-    uuid = b.get("badgeUuid", "")
-    return {
-        "badgeId": b.get("badgeId"),
-        "badgeName": b.get("badgeName", "Badge"),
-        "badgeUuid": uuid,
-        "imageUrl": BADGE_IMG_URL.format(uuid=uuid) if uuid else "",
-        "badgeEarnedDate": b.get("badgeEarnedDate"),
-        "badgePoints": b.get("badgePoints", 0),
-        "badgeCategoryId": b.get("badgeCategoryId"),
-        "badgeDifficultyId": b.get("badgeDifficultyId"),
-    }
-
-
-def format_challenge(b, status, progress=None, target=None):
-    """Formatta una sfida per il JSON output."""
-    uuid = b.get("badgeUuid", "")
-    return {
-        "badgeId": b.get("badgeId"),
-        "challengeName": b.get("badgeName", "Sfida"),
-        "badgeUuid": uuid,
-        "imageUrl": BADGE_IMG_URL.format(uuid=uuid) if uuid else "",
-        "startDate": b.get("badgeStartDate", ""),
-        "endDate": b.get("badgeEndDate", ""),
-        "challengeTarget": target if target is not None else (b.get("badgeTargetValue") or 0),
-        "currentValue": progress if progress is not None else (b.get("badgeProgressValue") or 0),
-        "badgeUnitId": b.get("badgeUnitId"),
-        "statusType": status,
-    }
+def make_image_url(uuid):
+    return BADGE_IMG_URL.format(uuid=uuid) if uuid else ""
 
 
 def fetch_badges(client):
-    """Recupera i badge guadagnati (non-sfida)."""
+    """Recupera i badge guadagnati."""
     try:
         earned = client.get_earned_badges()
-        print(f"Badge guadagnati totali: {len(earned)}")
-        return [format_badge(b) for b in earned]
+        print(f"Badge guadagnati: {len(earned)}")
+        result = []
+        for b in earned:
+            uuid = b.get("badgeUuid", "")
+            result.append({
+                "badgeId": b.get("badgeId"),
+                "badgeName": b.get("badgeName", "Badge"),
+                "badgeUuid": uuid,
+                "imageUrl": make_image_url(uuid),
+                "badgeEarnedDate": b.get("badgeEarnedDate"),
+                "badgePoints": b.get("badgePoints", 0),
+                "badgeCategoryId": b.get("badgeCategoryId"),
+            })
+        return result
     except Exception as e:
         print(f"Errore badge: {e}")
         return []
@@ -116,103 +98,106 @@ def fetch_badges(client):
 
 def fetch_challenges(client):
     """
-    Recupera le sfide mensili incrociando 3 endpoint:
-    1. available_badges → catalogo (target, date)
-    2. in_progress_badges → progresso reale per sfide attive
-    3. earned_badges → sfide completate di recente
+    Recupera le sfide mensili da 3 fonti:
+    1. get_non_completed_badge_challenges → sfide attive CON progresso reale
+    2. get_badge_challenges → sfide completate
+    3. get_available_badges → sfide disponibili ma non iscritte
     """
-    challenges = []
+    challenges = {}  # badgeId → challenge dict
 
-    # 1. Catalogo: tutte le sfide disponibili con date
-    available = {}
+    # 1. SFIDE ATTIVE con progresso reale (fonte principale!)
     try:
-        ab = client.get_available_badges()
-        for b in ab:
-            if b.get("badgeStartDate") and b.get("badgeTargetValue"):
-                available[b["badgeId"]] = b
-        print(f"Sfide nel catalogo: {len(available)}")
+        active = client.get_non_completed_badge_challenges(1, 200)
+        print(f"Sfide attive (non completate): {len(active)}")
+        for c in active:
+            bid = c.get("badgeId")
+            if not bid:
+                continue
+            uuid = c.get("badgeUuid", "")
+            challenges[bid] = {
+                "badgeId": bid,
+                "challengeName": c.get("badgeChallengeName", c.get("badgeName", "Sfida")),
+                "badgeUuid": uuid,
+                "imageUrl": make_image_url(uuid),
+                "startDate": c.get("startDate", ""),
+                "endDate": c.get("endDate", ""),
+                "challengeTarget": c.get("badgeTargetValue") or 0,
+                "currentValue": c.get("badgeProgressValue") or 0,
+                "badgeUnitId": c.get("badgeUnitId"),
+                "statusType": "ACTIVE",
+            }
     except Exception as e:
-        print(f"Errore available badges: {e}")
+        print(f"Errore sfide attive: {e}")
 
-    # 2. In-progress: sfide attive con progresso
-    in_progress = {}
+    # 2. SFIDE COMPLETATE (ultimi 12 mesi)
     try:
-        ip = client.get_in_progress_badges()
-        for b in ip:
-            in_progress[b["badgeId"]] = b
-        print(f"Badge in-progress: {len(in_progress)}")
+        all_bc = client.get_badge_challenges(1, 200)
+        cutoff = (datetime.utcnow() - timedelta(days=365)).isoformat()
+        completed = [
+            c for c in all_bc
+            if c.get("badgeEarnedDate") and c.get("badgeEarnedDate", "") > cutoff
+        ]
+        print(f"Sfide completate (ultimo anno): {len(completed)}")
+        for c in completed:
+            bid = c.get("badgeId")
+            if not bid or bid in challenges:
+                continue
+            uuid = c.get("badgeUuid", "")
+            challenges[bid] = {
+                "badgeId": bid,
+                "challengeName": c.get("badgeChallengeName", c.get("badgeName", "Sfida")),
+                "badgeUuid": uuid,
+                "imageUrl": make_image_url(uuid),
+                "startDate": c.get("startDate", ""),
+                "endDate": c.get("endDate", ""),
+                "challengeTarget": c.get("badgeTargetValue") or 0,
+                "currentValue": c.get("badgeProgressValue") or c.get("badgeTargetValue") or 0,
+                "badgeUnitId": c.get("badgeUnitId"),
+                "statusType": "COMPLETED",
+            }
     except Exception as e:
-        print(f"Errore in-progress: {e}")
+        print(f"Errore sfide completate: {e}")
 
-    # 3. Earned recenti: sfide completate (ultimi 90 giorni)
-    earned_recent = {}
+    # 3. SFIDE DISPONIBILI (non iscritte)
     try:
-        eb = client.get_earned_badges()
-        cutoff = (datetime.utcnow() - timedelta(days=90)).isoformat()
-        for b in eb:
-            date = b.get("badgeEarnedDate", "")
-            if date and date > cutoff and b.get("badgeTargetValue"):
-                earned_recent[b["badgeId"]] = b
-        print(f"Sfide completate (ultimi 90gg): {len(earned_recent)}")
+        available = client.get_available_badges()
+        monthly = [
+            b for b in available
+            if b.get("badgeStartDate") and b.get("badgeTargetValue")
+        ]
+        print(f"Sfide disponibili (non iscritte): {len(monthly)}")
+        for b in monthly:
+            bid = b.get("badgeId")
+            if not bid or bid in challenges:
+                continue
+            uuid = b.get("badgeUuid", "")
+            challenges[bid] = {
+                "badgeId": bid,
+                "challengeName": b.get("badgeName", "Sfida"),
+                "badgeUuid": uuid,
+                "imageUrl": make_image_url(uuid),
+                "startDate": b.get("badgeStartDate", ""),
+                "endDate": b.get("badgeEndDate", ""),
+                "challengeTarget": b.get("badgeTargetValue") or 0,
+                "currentValue": 0,
+                "badgeUnitId": b.get("badgeUnitId"),
+                "statusType": "NOT_JOINED",
+            }
     except Exception as e:
-        print(f"Errore earned badges: {e}")
+        print(f"Errore sfide disponibili: {e}")
 
-    # Unisci i badge IDs da tutti e tre gli endpoint
-    all_ids = set(available.keys()) | set(in_progress.keys()) | set(earned_recent.keys())
-
-    seen_ids = set()
-    for bid in all_ids:
-        if bid in seen_ids:
-            continue
-
-        # Priorità: earned > in_progress > available
-        if bid in earned_recent:
-            b = earned_recent[bid]
-            # Prendi le date dal catalogo se disponibili
-            cat = available.get(bid, {})
-            if cat:
-                b.setdefault("badgeStartDate", cat.get("badgeStartDate"))
-                b.setdefault("badgeEndDate", cat.get("badgeEndDate"))
-            challenges.append(format_challenge(
-                b, "COMPLETED",
-                progress=b.get("badgeProgressValue") or b.get("badgeTargetValue"),
-                target=b.get("badgeTargetValue"),
-            ))
-            seen_ids.add(bid)
-
-        elif bid in in_progress:
-            b = in_progress[bid]
-            # Solo se ha un target (è una sfida, non un badge normale)
-            if b.get("badgeTargetValue"):
-                cat = available.get(bid, {})
-                if cat:
-                    b.setdefault("badgeStartDate", cat.get("badgeStartDate"))
-                    b.setdefault("badgeEndDate", cat.get("badgeEndDate"))
-                challenges.append(format_challenge(
-                    b, "ACTIVE",
-                    progress=b.get("badgeProgressValue") or 0,
-                    target=b.get("badgeTargetValue"),
-                ))
-                seen_ids.add(bid)
-
-        elif bid in available:
-            b = available[bid]
-            # Sfida disponibile ma non iniziata/iscritta
-            challenges.append(format_challenge(b, "NOT_JOINED"))
-            seen_ids.add(bid)
-
-    completate = sum(1 for c in challenges if c["statusType"] == "COMPLETED")
-    attive = sum(1 for c in challenges if c["statusType"] == "ACTIVE")
-    disponibili = sum(1 for c in challenges if c["statusType"] == "NOT_JOINED")
-    print(f"Sfide totali: {len(challenges)} "
+    result = list(challenges.values())
+    completate = sum(1 for c in result if c["statusType"] == "COMPLETED")
+    attive = sum(1 for c in result if c["statusType"] == "ACTIVE")
+    disponibili = sum(1 for c in result if c["statusType"] == "NOT_JOINED")
+    print(f"Sfide totali: {len(result)} "
           f"({completate} completate, {attive} attive, {disponibili} disponibili)")
-
-    return challenges
+    return result
 
 
 def main():
     if not TOKEN_B64 and not (EMAIL and PASSWORD):
-        print("ERRORE: Nessuna credenziale configurata!")
+        print("ERRORE: Nessuna credenziale!")
         raise SystemExit(1)
 
     client = get_client()
