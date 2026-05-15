@@ -7,7 +7,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=Outfit:wght@600;800&display=swap" rel="stylesheet">
     <style>
-        /* ── Reset & Variabili ── */
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
@@ -21,6 +20,8 @@
             --accent-glow: rgba(61, 219, 169, 0.25);
             --gold: #f5c842;
             --gold-glow: rgba(245, 200, 66, 0.2);
+            --orange: #f59e42;
+            --red: #e05555;
             --progress-bg: #232a38;
             --radius: 14px;
         }
@@ -33,7 +34,6 @@
             line-height: 1.5;
         }
 
-        /* ── Sfondo con sottile griglia ── */
         body::before {
             content: '';
             position: fixed;
@@ -45,20 +45,16 @@
             z-index: 0;
         }
 
-        /* ── Layout ── */
         .wrapper {
             position: relative;
             z-index: 1;
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 48px 24px 80px;
         }
 
         /* ── Header ── */
-        header {
-            text-align: center;
-            margin-bottom: 56px;
-        }
+        header { text-align: center; margin-bottom: 48px; }
 
         header h1 {
             font-family: 'Outfit', sans-serif;
@@ -71,11 +67,7 @@
             background-clip: text;
         }
 
-        header p {
-            color: var(--text-dim);
-            margin-top: 8px;
-            font-size: 0.95rem;
-        }
+        header p { color: var(--text-dim); margin-top: 8px; font-size: 0.95rem; }
 
         .stats-row {
             display: flex;
@@ -85,9 +77,7 @@
             flex-wrap: wrap;
         }
 
-        .stat {
-            text-align: center;
-        }
+        .stat { text-align: center; }
 
         .stat-value {
             font-family: 'Outfit', sans-serif;
@@ -95,8 +85,8 @@
             font-size: 2rem;
             color: var(--accent);
         }
-
         .stat-value.gold { color: var(--gold); }
+        .stat-value.orange { color: var(--orange); }
 
         .stat-label {
             font-size: 0.8rem;
@@ -106,12 +96,41 @@
             margin-top: 2px;
         }
 
+        /* ── Tabs / Filtro ── */
+        .tab-bar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+            padding: 8px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .tab-btn:hover { background: var(--surface-hover); color: var(--text); }
+        .tab-btn.active {
+            background: var(--accent);
+            color: var(--bg);
+            border-color: var(--accent);
+            font-weight: 700;
+        }
+
         /* ── Sezioni ── */
         .section-title {
             font-family: 'Outfit', sans-serif;
             font-weight: 600;
             font-size: 1.4rem;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             padding-bottom: 12px;
             border-bottom: 1px solid var(--border);
             display: flex;
@@ -119,192 +138,204 @@
             gap: 10px;
         }
 
-        .section-title .icon {
-            font-size: 1.3rem;
-        }
-
-        section {
-            margin-bottom: 56px;
-        }
-
-        /* ── Griglia Badge ── */
-        .badge-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 16px;
-        }
-
-        .badge-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 20px 12px 16px;
-            text-align: center;
-            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-            cursor: default;
-        }
-
-        .badge-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent);
-            box-shadow: 0 8px 32px var(--accent-glow);
-        }
-
-        .badge-card img {
-            width: 80px;
-            height: 80px;
-            object-fit: contain;
-            margin-bottom: 10px;
-            drop-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        }
-
-        .badge-card .name {
-            font-size: 0.78rem;
-            font-weight: 500;
-            color: var(--text);
-            display: block;
-            line-height: 1.3;
-        }
-
-        .badge-card .date {
-            font-size: 0.68rem;
+        .section-title .icon { font-size: 1.3rem; }
+        .section-title .count {
+            font-size: 0.85rem;
             color: var(--text-dim);
-            margin-top: 4px;
+            font-weight: 400;
+            margin-left: auto;
         }
 
-        /* ── Griglia Sfide ── */
+        section { margin-bottom: 48px; }
+
+        /* ── Challenge Grid (stile Garmin Connect) ── */
         .challenge-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 12px;
         }
 
         .challenge-card {
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 20px;
+            padding: 16px;
             display: flex;
-            gap: 16px;
-            align-items: center;
+            gap: 14px;
+            align-items: flex-start;
             transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
         }
 
-        /* ── EFFETTO CHIAVE: bianco e nero → colore ── */
-        .challenge-card.active img {
-            filter: grayscale(100%) brightness(0.7);
-            opacity: 0.6;
-            transition: filter 0.4s, opacity 0.4s;
+        .challenge-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255,255,255,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
 
-        .challenge-card.active:hover img {
-            filter: grayscale(50%) brightness(0.85);
-            opacity: 0.8;
-        }
-
-        .challenge-card.completed {
-            border-color: var(--gold);
-        }
-
-        .challenge-card.completed:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 32px var(--gold-glow);
-        }
-
-        .challenge-card.completed img {
-            filter: none;
-            opacity: 1;
-            /* Leggero bagliore dorato per le sfide completate */
-            drop-shadow: 0 0 12px var(--gold-glow);
-        }
-
-        .challenge-card img {
-            width: 64px;
-            height: 64px;
+        /* Immagine sfida */
+        .challenge-img {
+            width: 56px;
+            height: 56px;
             object-fit: contain;
             flex-shrink: 0;
             border-radius: 10px;
         }
 
-        .challenge-info {
-            flex: 1;
-            min-width: 0;
+        /* Bianco e nero per sfide attive / non iscritte */
+        .challenge-card.active .challenge-img {
+            filter: grayscale(100%) brightness(0.8);
+            opacity: 0.7;
         }
+
+        .challenge-card.not-joined .challenge-img {
+            filter: grayscale(100%) brightness(0.5);
+            opacity: 0.4;
+        }
+
+        /* Colore pieno per sfide completate */
+        .challenge-card.completed .challenge-img {
+            filter: none;
+            opacity: 1;
+        }
+
+        .challenge-card.completed {
+            border-color: rgba(61, 219, 169, 0.3);
+        }
+
+        .challenge-info { flex: 1; min-width: 0; }
 
         .challenge-info .name {
             font-weight: 700;
-            font-size: 0.9rem;
-            margin-bottom: 4px;
+            font-size: 0.88rem;
+            margin-bottom: 2px;
+            line-height: 1.3;
         }
 
-        .challenge-info .desc {
-            font-size: 0.75rem;
+        .challenge-info .deadline {
+            font-size: 0.72rem;
             color: var(--text-dim);
             margin-bottom: 10px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
         }
 
-        /* ── Barra di progresso ── */
+        /* Barra progresso */
         .progress-bar {
-            height: 6px;
+            height: 5px;
             background: var(--progress-bg);
             border-radius: 3px;
             overflow: hidden;
-            position: relative;
         }
 
         .progress-fill {
             height: 100%;
             border-radius: 3px;
-            background: linear-gradient(90deg, var(--accent), var(--gold));
             transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        .progress-label {
-            font-size: 0.7rem;
+        /* Colore barra in base alla percentuale */
+        .progress-fill.low { background: var(--red); }
+        .progress-fill.mid { background: var(--orange); }
+        .progress-fill.high { background: var(--gold); }
+        .progress-fill.done { background: var(--accent); }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-top: 5px;
+        }
+
+        .progress-values {
+            font-size: 0.72rem;
             color: var(--text-dim);
-            margin-top: 4px;
-            text-align: right;
         }
 
-        .challenge-card.completed .progress-fill {
-            background: var(--gold);
+        .progress-pct {
+            font-size: 0.72rem;
+            font-weight: 700;
         }
 
-        .challenge-card.completed .status-tag {
+        .progress-pct.done { color: var(--accent); }
+
+        .completed-tag {
             display: inline-block;
             font-size: 0.7rem;
             font-weight: 700;
             color: var(--bg);
-            background: var(--gold);
-            padding: 2px 8px;
+            background: var(--accent);
+            padding: 2px 10px;
             border-radius: 6px;
-            margin-top: 4px;
+            margin-top: 6px;
+        }
+
+        /* ── Badge Grid ── */
+        .badge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 12px;
+        }
+
+        .badge-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px 10px 14px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+
+        .badge-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent);
+            box-shadow: 0 6px 24px var(--accent-glow);
+        }
+
+        .badge-card img {
+            width: 72px;
+            height: 72px;
+            object-fit: contain;
+            margin-bottom: 8px;
+        }
+
+        .badge-card .name {
+            font-size: 0.75rem;
+            font-weight: 500;
+            display: block;
+            line-height: 1.3;
+        }
+
+        .badge-card .date {
+            font-size: 0.65rem;
+            color: var(--text-dim);
+            margin-top: 3px;
         }
 
         /* ── Loading / Empty ── */
         .loading, .empty-state {
             text-align: center;
-            padding: 60px 20px;
+            padding: 48px 20px;
             color: var(--text-dim);
         }
 
         .loading .spinner {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             border: 3px solid var(--border);
             border-top-color: var(--accent);
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
-            margin: 0 auto 16px;
+            margin: 0 auto 12px;
         }
 
         @keyframes spin { to { transform: rotate(360deg); } }
 
-        .empty-state .icon { font-size: 2rem; margin-bottom: 8px; }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .challenge-card, .badge-card {
+            animation: fadeUp 0.3s ease both;
+        }
 
         /* ── Footer ── */
         footer {
@@ -315,22 +346,12 @@
             border-top: 1px solid var(--border);
         }
 
-        /* ── Animazione di ingresso ── */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(16px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .badge-card, .challenge-card {
-            animation: fadeUp 0.4s ease both;
-        }
-
         /* ── Responsive ── */
         @media (max-width: 600px) {
-            .wrapper { padding: 32px 16px 60px; }
-            .badge-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 10px; }
+            .wrapper { padding: 28px 14px 50px; }
             .challenge-grid { grid-template-columns: 1fr; }
-            .stats-row { gap: 20px; }
+            .badge-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
+            .stats-row { gap: 18px; }
         }
     </style>
 </head>
@@ -346,28 +367,35 @@
                 </div>
                 <div class="stat">
                     <div class="stat-value gold" id="challenge-done">0</div>
-                    <div class="stat-label">Sfide Completate</div>
+                    <div class="stat-label">Completate</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value" id="challenge-active">0</div>
-                    <div class="stat-label">Sfide in Corso</div>
+                    <div class="stat-value orange" id="challenge-active">0</div>
+                    <div class="stat-label">In corso</div>
                 </div>
             </div>
         </header>
 
-        <!-- Sfide mensili -->
+        <!-- Sfide -->
         <section id="challenges-section" style="display:none;">
-            <h2 class="section-title"><span class="icon">⚔️</span> Sfide del Mese</h2>
+            <h2 class="section-title">
+                <span class="icon">⚔️</span> Sfide
+                <span class="count" id="challenge-count-label"></span>
+            </h2>
+            <div class="tab-bar" id="month-tabs"></div>
             <div id="challenges" class="challenge-grid"></div>
         </section>
 
         <!-- Badge -->
         <section>
-            <h2 class="section-title"><span class="icon">🏅</span> Badge Guadagnati</h2>
+            <h2 class="section-title">
+                <span class="icon">🏅</span> Badge Guadagnati
+                <span class="count" id="badge-count-label"></span>
+            </h2>
             <div id="badges" class="badge-grid">
                 <div class="loading">
                     <div class="spinner"></div>
-                    <p>Caricamento badge...</p>
+                    <p>Caricamento...</p>
                 </div>
             </div>
         </section>
@@ -379,16 +407,244 @@
     </div>
 
     <script>
+        // ── Utilità ──
+
+        const UNIT_MAP = {
+            1: 'm',      // metri → mostriamo in km
+            2: 's',      // secondi → mostriamo in ore/minuti
+            3: 'cal',
+            4: 'giorni',
+            5: 'attività',
+            6: 'like',
+            7: 'passi',
+        };
+
+        function formatValue(value, unitId) {
+            if (!value && value !== 0) return '0';
+            const v = parseFloat(value);
+
+            switch (unitId) {
+                case 1: // metri → km
+                    return (v >= 1000) ? (v / 1000).toFixed(1) + ' km' : v.toFixed(0) + ' m';
+                case 2: // secondi → ore/minuti
+                    if (v >= 3600) {
+                        const h = Math.floor(v / 3600);
+                        const m = Math.floor((v % 3600) / 60);
+                        return m > 0 ? `${h}h ${m}m` : `${h}h`;
+                    }
+                    return Math.floor(v / 60) + 'm';
+                case 3: // calorie
+                    return v.toLocaleString('it-IT') + ' cal';
+                case 4: // giorni
+                    return v.toFixed(0) + ' di ' + v.toFixed(0) + ' giorni';
+                case 7: // passi
+                    return v >= 1000
+                        ? (v / 1000).toFixed(v >= 10000 ? 0 : 1) + 'K passi'
+                        : v.toFixed(0) + ' passi';
+                default:
+                    return v % 1 === 0 ? v.toFixed(0) : v.toFixed(1);
+            }
+        }
+
+        function formatProgress(current, target, unitId) {
+            const c = parseFloat(current) || 0;
+            const t = parseFloat(target) || 1;
+
+            switch (unitId) {
+                case 1: // metri → km
+                    if (t >= 1000) {
+                        return `${(c/1000).toFixed(1)} di ${(t/1000).toFixed(1)} km`;
+                    }
+                    return `${c.toFixed(0)} di ${t.toFixed(0)} m`;
+                case 2: // secondi → ore
+                    const ch = Math.floor(c / 3600), cm = Math.floor((c % 3600) / 60);
+                    const th = Math.floor(t / 3600), tm = Math.floor((t % 3600) / 60);
+                    const cStr = cm > 0 ? `${ch}h ${cm}m` : `${ch}h`;
+                    const tStr = tm > 0 ? `${th}h ${tm}m` : `${th}h`;
+                    return `${cStr} di ${tStr}`;
+                case 3:
+                    return `${c.toLocaleString('it-IT')} di ${t.toLocaleString('it-IT')} calorie attive`;
+                case 4:
+                    return `${c.toFixed(0)} di ${t.toFixed(0)} giorni`;
+                case 5:
+                    return `${c.toFixed(0)} di ${t.toFixed(0)} attività`;
+                case 6:
+                    return `${c.toFixed(0)} di ${t.toFixed(0)} like`;
+                case 7:
+                    if (t >= 1000) {
+                        return `${c.toLocaleString('it-IT')} di ${t.toLocaleString('it-IT')} passi`;
+                    }
+                    return `${c.toFixed(0)} di ${t.toFixed(0)} passi`;
+                default:
+                    return `${c.toFixed(c % 1 ? 1 : 0)} di ${t.toFixed(t % 1 ? 1 : 0)} obiettivi raggiunti`;
+            }
+        }
+
+        function formatDeadline(endDate) {
+            if (!endDate) return '';
+            const d = new Date(endDate);
+            const day = d.getDate();
+            const months = ['Gen','Feb','Mar','Apr','Mag','Giu','Lug','Ago','Set','Ott','Nov','Dic'];
+            return `Termina il giorno ${day} ${months[d.getMonth()]}`;
+        }
+
+        function getMonthLabel(dateStr) {
+            if (!dateStr) return 'Altro';
+            const d = new Date(dateStr);
+            const months = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno',
+                            'Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
+            return `${months[d.getMonth()]} ${d.getFullYear()}`;
+        }
+
+        function getMonthKey(dateStr) {
+            if (!dateStr) return 'other';
+            const d = new Date(dateStr);
+            return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
+        }
+
+        function progressClass(pct) {
+            if (pct >= 100) return 'done';
+            if (pct >= 75) return 'high';
+            if (pct >= 40) return 'mid';
+            return 'low';
+        }
+
+        const FALLBACK_IMG = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 56'><rect fill='%23232a38' width='56' height='56' rx='10'/><text x='28' y='36' text-anchor='middle' font-size='22'>🏅</text></svg>";
+
+        // ── Render ──
+
+        let allChallenges = [];
+        let currentMonthFilter = null;
+
+        function renderChallenges(filter) {
+            const container = document.getElementById('challenges');
+            container.innerHTML = '';
+
+            let filtered = allChallenges;
+            if (filter && filter !== 'all') {
+                filtered = allChallenges.filter(ch => getMonthKey(ch.endDate || ch.startDate) === filter);
+            }
+
+            // Ordine: ACTIVE prima, poi COMPLETED, poi NOT_JOINED
+            const order = { 'ACTIVE': 0, 'COMPLETED': 1, 'NOT_JOINED': 2 };
+            filtered.sort((a, b) => {
+                const oa = order[a.statusType] ?? 9;
+                const ob = order[b.statusType] ?? 9;
+                if (oa !== ob) return oa - ob;
+                // Dentro ogni gruppo, ordina per % progresso desc
+                const pa = (a.currentValue / (a.challengeTarget || 1)) * 100;
+                const pb = (b.currentValue / (b.challengeTarget || 1)) * 100;
+                return pb - pa;
+            });
+
+            if (filtered.length === 0) {
+                container.innerHTML = '<div class="empty-state"><p>Nessuna sfida per questo periodo.</p></div>';
+                return;
+            }
+
+            filtered.forEach((ch, i) => {
+                const target = ch.challengeTarget || 1;
+                const current = ch.currentValue || 0;
+                const pct = Math.min((current / target) * 100, 100);
+                const isCompleted = ch.statusType === 'COMPLETED';
+                const isNotJoined = ch.statusType === 'NOT_JOINED';
+
+                const card = document.createElement('div');
+                const cssClass = isCompleted ? 'completed' : (isNotJoined ? 'not-joined' : 'active');
+                card.className = `challenge-card ${cssClass}`;
+                card.style.animationDelay = `${Math.min(i * 0.03, 0.8)}s`;
+
+                const imgUrl = ch.imageUrl || '';
+                const progressStr = formatProgress(current, target, ch.badgeUnitId);
+
+                card.innerHTML = `
+                    <img class="challenge-img" src="${imgUrl}" alt="${ch.challengeName}" loading="lazy"
+                         onerror="this.src='${FALLBACK_IMG}'">
+                    <div class="challenge-info">
+                        <div class="name">${ch.challengeName}</div>
+                        <div class="deadline">${formatDeadline(ch.endDate)}</div>
+                        ${isCompleted
+                            ? `<div class="progress-bar"><div class="progress-fill done" style="width:100%"></div></div>
+                               <div class="progress-text">
+                                   <span class="progress-values">${progressStr}</span>
+                                   <span class="progress-pct done">100%</span>
+                               </div>`
+                            : `<div class="progress-bar"><div class="progress-fill ${progressClass(pct)}" style="width:${pct}%"></div></div>
+                               <div class="progress-text">
+                                   <span class="progress-values">${progressStr}</span>
+                                   <span class="progress-pct">${Math.round(pct)}%</span>
+                               </div>`
+                        }
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function buildMonthTabs(challenges) {
+            const tabBar = document.getElementById('month-tabs');
+            tabBar.innerHTML = '';
+
+            // Raccogli mesi unici
+            const months = new Map();
+            challenges.forEach(ch => {
+                const key = getMonthKey(ch.endDate || ch.startDate);
+                if (!months.has(key)) {
+                    months.set(key, getMonthLabel(ch.endDate || ch.startDate));
+                }
+            });
+
+            // Ordina per data desc (mese più recente prima)
+            const sorted = [...months.entries()].sort((a, b) => b[0].localeCompare(a[0]));
+
+            // Tab "Tutte"
+            const allBtn = document.createElement('button');
+            allBtn.className = 'tab-btn';
+            allBtn.textContent = 'Tutte';
+            allBtn.dataset.filter = 'all';
+            allBtn.onclick = () => selectTab('all');
+            tabBar.appendChild(allBtn);
+
+            sorted.forEach(([key, label]) => {
+                const btn = document.createElement('button');
+                btn.className = 'tab-btn';
+                btn.textContent = label;
+                btn.dataset.filter = key;
+                btn.onclick = () => selectTab(key);
+                tabBar.appendChild(btn);
+            });
+
+            // Seleziona il mese corrente di default
+            const now = new Date();
+            const currentKey = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`;
+            if (months.has(currentKey)) {
+                selectTab(currentKey);
+            } else if (sorted.length > 0) {
+                selectTab(sorted[0][0]);
+            } else {
+                selectTab('all');
+            }
+        }
+
+        function selectTab(filter) {
+            currentMonthFilter = filter;
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.filter === filter);
+            });
+            renderChallenges(filter);
+        }
+
+        // ── Main ──
+
         async function loadData() {
             const badgesContainer = document.getElementById('badges');
-            const challengesContainer = document.getElementById('challenges');
 
             try {
                 const response = await fetch('badges.json');
                 if (!response.ok) throw new Error(`HTTP ${response.status}`);
                 const data = await response.json();
 
-                // ── Timestamp ──
+                // Timestamp
                 if (data.lastUpdated) {
                     const d = new Date(data.lastUpdated);
                     document.getElementById('last-updated').textContent =
@@ -398,25 +654,43 @@
                         });
                 }
 
+                // ── Sfide ──
+                allChallenges = data.challenges || [];
+
+                if (allChallenges.length > 0) {
+                    document.getElementById('challenges-section').style.display = '';
+
+                    const done = allChallenges.filter(c => c.statusType === 'COMPLETED').length;
+                    const active = allChallenges.filter(c => c.statusType === 'ACTIVE').length;
+                    document.getElementById('challenge-done').textContent = done;
+                    document.getElementById('challenge-active').textContent = active;
+                    document.getElementById('challenge-count-label').textContent =
+                        `${allChallenges.length} sfide`;
+
+                    buildMonthTabs(allChallenges);
+                }
+
                 // ── Badge ──
-                const badges = data.badges || data; // Compatibile col vecchio formato
+                const badges = data.badges || [];
                 badgesContainer.innerHTML = '';
 
                 if (badges.length === 0) {
                     badgesContainer.innerHTML =
-                        '<div class="empty-state"><div class="icon">🏃</div><p>Nessun badge ancora — continua ad allenarti!</p></div>';
+                        '<div class="empty-state"><p>Nessun badge — continua ad allenarti!</p></div>';
                 } else {
-                    // Ordina per data (più recenti prima)
                     badges.sort((a, b) =>
                         (b.badgeEarnedDate || '').localeCompare(a.badgeEarnedDate || '')
                     );
 
+                    document.getElementById('badge-count-label').textContent =
+                        `${badges.length} badge`;
+
                     badges.forEach((badge, i) => {
                         const card = document.createElement('div');
                         card.className = 'badge-card';
-                        card.style.animationDelay = `${Math.min(i * 0.04, 1)}s`;
+                        card.style.animationDelay = `${Math.min(i * 0.02, 1)}s`;
 
-                        const imgUrl = badge.badgeSmallImageUrl || badge.badgeImageUrl || badge.badgeFullImageUrl || '';
+                        const imgUrl = badge.imageUrl || '';
                         const name = badge.badgeName || 'Badge';
                         let dateStr = '';
                         if (badge.badgeEarnedDate) {
@@ -428,7 +702,7 @@
 
                         card.innerHTML = `
                             <img src="${imgUrl}" alt="${name}" loading="lazy"
-                                 onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 80 80%22><rect fill=%22%23232a38%22 width=%2280%22 height=%2280%22 rx=%2210%22/><text x=%2240%22 y=%2248%22 text-anchor=%22middle%22 font-size=%2228%22>🏅</text></svg>'">
+                                 onerror="this.src='${FALLBACK_IMG}'">
                             <span class="name">${name}</span>
                             ${dateStr ? `<span class="date">${dateStr}</span>` : ''}
                         `;
@@ -436,61 +710,14 @@
                     });
                 }
 
-                // ── Sfide ──
-                const challenges = data.challenges || [];
-
-                if (challenges.length > 0) {
-                    document.getElementById('challenges-section').style.display = '';
-
-                    // Prima le completate, poi le attive
-                    challenges.sort((a, b) => {
-                        if (a.statusType === 'COMPLETED' && b.statusType !== 'COMPLETED') return -1;
-                        if (a.statusType !== 'COMPLETED' && b.statusType === 'COMPLETED') return 1;
-                        return 0;
-                    });
-
-                    challenges.forEach((ch, i) => {
-                        const isCompleted = ch.statusType === 'COMPLETED';
-                        const card = document.createElement('div');
-                        card.className = `challenge-card ${isCompleted ? 'completed' : 'active'}`;
-                        card.style.animationDelay = `${i * 0.06}s`;
-
-                        const target = ch.challengeTarget || 1;
-                        const current = ch.currentValue || 0;
-                        const pct = Math.min((current / target) * 100, 100);
-
-                        const imgUrl = ch.imageUrl || '';
-
-                        card.innerHTML = `
-                            <img src="${imgUrl}" alt="${ch.challengeName}" loading="lazy"
-                                 onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect fill=%22%23232a38%22 width=%2264%22 height=%2264%22 rx=%2210%22/><text x=%2232%22 y=%2240%22 text-anchor=%22middle%22 font-size=%2224%22>⚔️</text></svg>'">
-                            <div class="challenge-info">
-                                <div class="name">${ch.challengeName}</div>
-                                ${ch.challengeDescription ? `<div class="desc">${ch.challengeDescription}</div>` : ''}
-                                ${isCompleted
-                                    ? '<span class="status-tag">✓ Completata</span>'
-                                    : `<div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
-                                       <div class="progress-label">${Math.round(pct)}%</div>`
-                                }
-                            </div>
-                        `;
-                        challengesContainer.appendChild(card);
-                    });
-
-                    // Stats
-                    const done = challenges.filter(c => c.statusType === 'COMPLETED').length;
-                    document.getElementById('challenge-done').textContent = done;
-                    document.getElementById('challenge-active').textContent = challenges.length - done;
-                }
-
-                // Stats globali
+                // Stats
                 document.getElementById('badge-count').textContent = badges.length;
                 document.getElementById('stats').style.display = '';
 
             } catch (error) {
                 console.error('Errore:', error);
                 badgesContainer.innerHTML =
-                    '<div class="empty-state"><div class="icon">⚠️</div><p>Impossibile caricare i dati.<br>Controlla che badges.json sia presente.</p></div>';
+                    '<div class="empty-state"><p>Impossibile caricare i dati.<br>Controlla che badges.json sia presente.</p></div>';
             }
         }
 
