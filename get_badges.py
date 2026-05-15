@@ -24,7 +24,7 @@ PASSWORD = os.getenv("GARMIN_PASSWORD")
 TOKEN_B64 = os.getenv("GARMIN_TOKEN")
 
 # URL base per le immagini dei badge Garmin
-BADGE_IMG_URL = "https://connect.garmin.com/badge-service/badge/image/{uuid}"
+BADGE_IMG_URL = "https://connect.garmin.com/images/badges/xxhdpi/badge_{uuid}_lrg.png"
 
 
 def restore_token():
