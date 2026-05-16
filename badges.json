@@ -1,6 +1,24 @@
 {
-  "lastUpdated": "2026-05-15T13:26:57.183809Z",
+  "lastUpdated": "2026-05-16T05:16:19.751098Z",
   "badges": [
+    {
+      "badgeId": 3057,
+      "badgeName": "May Ride to 200",
+      "badgeUuid": "BF2E7B26D65440C8B87E4015975A9AC3",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_BF2E7B26D65440C8B87E4015975A9AC3_lrg.png",
+      "badgeEarnedDate": "2026-05-15T16:41:57.0",
+      "badgePoints": 2,
+      "badgeCategoryId": 4
+    },
+    {
+      "badgeId": 3049,
+      "badgeName": "May Weekend 40K",
+      "badgeUuid": "9B009394634B49C494329571BE832797",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_9B009394634B49C494329571BE832797_lrg.png",
+      "badgeEarnedDate": "2026-05-15T16:41:57.0",
+      "badgePoints": 2,
+      "badgeCategoryId": 4
+    },
     {
       "badgeId": 3050,
       "badgeName": "May Time to Run",
@@ -7409,7 +7427,7 @@
       "startDate": "2026-05-03T00:00:00.0",
       "endDate": "2026-05-16T23:59:59.0",
       "challengeTarget": 200000.0,
-      "currentValue": 167311.18359375,
+      "currentValue": 200000.0,
       "badgeUnitId": 1,
       "statusType": "ACTIVE"
     },
@@ -7517,7 +7535,7 @@
       "startDate": "2026-05-01T00:00:00.0",
       "endDate": "2026-05-31T23:59:59.0",
       "challengeTarget": 72000.0,
-      "currentValue": 40211.431640625,
+      "currentValue": 47990.431640625,
       "badgeUnitId": 7,
       "statusType": "ACTIVE"
     },
@@ -7541,7 +7559,7 @@
       "startDate": "2026-05-01T00:00:00.0",
       "endDate": "2026-05-31T23:59:59.0",
       "challengeTarget": 14400.0,
-      "currentValue": 12339.851318359375,
+      "currentValue": 12102.059204101562,
       "badgeUnitId": 7,
       "statusType": "ACTIVE"
     },
