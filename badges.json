@@ -1,6 +1,15 @@
 {
-  "lastUpdated": "2026-05-16T05:16:19.751098Z",
+  "lastUpdated": "2026-05-17T05:37:35.860390Z",
   "badges": [
+    {
+      "badgeId": 3068,
+      "badgeName": "May Intense Cardio",
+      "badgeUuid": "A79150DC90C54D9E9E16DCD3FB6C2B84",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_A79150DC90C54D9E9E16DCD3FB6C2B84_lrg.png",
+      "badgeEarnedDate": "2026-05-16T05:17:38.0",
+      "badgePoints": 4,
+      "badgeCategoryId": 4
+    },
     {
       "badgeId": 3057,
       "badgeName": "May Ride to 200",
@@ -7559,7 +7568,7 @@
       "startDate": "2026-05-01T00:00:00.0",
       "endDate": "2026-05-31T23:59:59.0",
       "challengeTarget": 14400.0,
-      "currentValue": 12102.059204101562,
+      "currentValue": 14061.55419921875,
       "badgeUnitId": 7,
       "statusType": "ACTIVE"
     },
@@ -7657,18 +7666,6 @@
       "challengeTarget": 7.0,
       "currentValue": 0,
       "badgeUnitId": 4,
-      "statusType": "NOT_JOINED"
-    },
-    {
-      "badgeId": 3068,
-      "challengeName": "May Intense Cardio",
-      "badgeUuid": "A79150DC90C54D9E9E16DCD3FB6C2B84",
-      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_A79150DC90C54D9E9E16DCD3FB6C2B84_lrg.png",
-      "startDate": "2026-05-01T00:00:00.0",
-      "endDate": "2026-05-31T23:59:59.0",
-      "challengeTarget": 10800.0,
-      "currentValue": 0,
-      "badgeUnitId": 7,
       "statusType": "NOT_JOINED"
     },
     {
