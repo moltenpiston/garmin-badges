@@ -1,6 +1,15 @@
 {
-  "lastUpdated": "2026-05-17T05:37:35.860390Z",
+  "lastUpdated": "2026-05-18T06:01:04.940696Z",
   "badges": [
+    {
+      "badgeId": 3053,
+      "badgeName": "May Warrior",
+      "badgeUuid": "804C470A596442468DB336DD119555E5",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_804C470A596442468DB336DD119555E5_lrg.png",
+      "badgeEarnedDate": "2026-05-18T04:49:04.0",
+      "badgePoints": 2,
+      "badgeCategoryId": 4
+    },
     {
       "badgeId": 3068,
       "badgeName": "May Intense Cardio",
@@ -7429,18 +7438,6 @@
   ],
   "challenges": [
     {
-      "badgeId": 3057,
-      "challengeName": "May Ride to 200",
-      "badgeUuid": "BF2E7B26D65440C8B87E4015975A9AC3",
-      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_BF2E7B26D65440C8B87E4015975A9AC3_lrg.png",
-      "startDate": "2026-05-03T00:00:00.0",
-      "endDate": "2026-05-16T23:59:59.0",
-      "challengeTarget": 200000.0,
-      "currentValue": 200000.0,
-      "badgeUnitId": 1,
-      "statusType": "ACTIVE"
-    },
-    {
       "badgeId": 3049,
       "challengeName": "May Weekend 40K",
       "badgeUuid": "9B009394634B49C494329571BE832797",
@@ -7513,18 +7510,6 @@
       "statusType": "ACTIVE"
     },
     {
-      "badgeId": 3061,
-      "challengeName": "May Gains",
-      "badgeUuid": "0F27D4D797C34AB6A94A6B37E3F773FA",
-      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_0F27D4D797C34AB6A94A6B37E3F773FA_lrg.png",
-      "startDate": "2026-05-01T00:00:00.0",
-      "endDate": "2026-05-31T23:59:59.0",
-      "challengeTarget": 14400.0,
-      "currentValue": 6905.98828125,
-      "badgeUnitId": 7,
-      "statusType": "ACTIVE"
-    },
-    {
       "badgeId": 3050,
       "challengeName": "May Time to Run",
       "badgeUuid": "A015AE110B1C4050996CF4405DDEEA46",
@@ -7544,7 +7529,7 @@
       "startDate": "2026-05-01T00:00:00.0",
       "endDate": "2026-05-31T23:59:59.0",
       "challengeTarget": 72000.0,
-      "currentValue": 47990.431640625,
+      "currentValue": 56803.33984375,
       "badgeUnitId": 7,
       "statusType": "ACTIVE"
     },
@@ -7568,7 +7553,7 @@
       "startDate": "2026-05-01T00:00:00.0",
       "endDate": "2026-05-31T23:59:59.0",
       "challengeTarget": 14400.0,
-      "currentValue": 14061.55419921875,
+      "currentValue": 14400.0,
       "badgeUnitId": 7,
       "statusType": "ACTIVE"
     },
@@ -7606,6 +7591,18 @@
       "challengeTarget": 300000.0,
       "currentValue": 300000.0,
       "badgeUnitId": 5,
+      "statusType": "ACTIVE"
+    },
+    {
+      "badgeId": 3061,
+      "challengeName": "May Gains",
+      "badgeUuid": "0F27D4D797C34AB6A94A6B37E3F773FA",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_0F27D4D797C34AB6A94A6B37E3F773FA_lrg.png",
+      "startDate": "2026-05-01T00:00:00.0",
+      "endDate": "2026-05-31T23:59:59.0",
+      "challengeTarget": 14400.0,
+      "currentValue": 6905.98828125,
+      "badgeUnitId": 7,
       "statusType": "ACTIVE"
     },
     {
