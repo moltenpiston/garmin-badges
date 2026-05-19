@@ -1,6 +1,24 @@
 {
-  "lastUpdated": "2026-05-18T06:01:04.940696Z",
+  "lastUpdated": "2026-05-19T05:56:35.451104Z",
   "badges": [
+    {
+      "badgeId": 1836,
+      "badgeName": "Rise and Grind",
+      "badgeUuid": "DA851BC1BF9F454FB3BF26E92DB42441",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_DA851BC1BF9F454FB3BF26E92DB42441_lrg.png",
+      "badgeEarnedDate": "2026-05-19T04:03:33.0",
+      "badgePoints": 2,
+      "badgeCategoryId": 1
+    },
+    {
+      "badgeId": 1822,
+      "badgeName": "Sleep Savant",
+      "badgeUuid": "E01402D037084967955D4A008FA98CB8",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_E01402D037084967955D4A008FA98CB8_lrg.png",
+      "badgeEarnedDate": "2026-05-19T04:05:14.477",
+      "badgePoints": 1,
+      "badgeCategoryId": 7
+    },
     {
       "badgeId": 3053,
       "badgeName": "May Warrior",
@@ -81,15 +99,6 @@
       "badgeEarnedDate": "2026-05-13T09:35:15.385",
       "badgePoints": 2,
       "badgeCategoryId": 4
-    },
-    {
-      "badgeId": 1836,
-      "badgeName": "Rise and Grind",
-      "badgeUuid": "DA851BC1BF9F454FB3BF26E92DB42441",
-      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_DA851BC1BF9F454FB3BF26E92DB42441_lrg.png",
-      "badgeEarnedDate": "2026-05-13T04:12:27.0",
-      "badgePoints": 2,
-      "badgeCategoryId": 1
     },
     {
       "badgeId": 3071,
@@ -351,15 +360,6 @@
       "badgeEarnedDate": "2026-04-19T08:41:42.0",
       "badgePoints": 1,
       "badgeCategoryId": 4
-    },
-    {
-      "badgeId": 1822,
-      "badgeName": "Sleep Savant",
-      "badgeUuid": "E01402D037084967955D4A008FA98CB8",
-      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_E01402D037084967955D4A008FA98CB8_lrg.png",
-      "badgeEarnedDate": "2026-04-19T04:40:35.104",
-      "badgePoints": 1,
-      "badgeCategoryId": 7
     },
     {
       "badgeId": 3014,
@@ -7438,18 +7438,6 @@
   ],
   "challenges": [
     {
-      "badgeId": 3049,
-      "challengeName": "May Weekend 40K",
-      "badgeUuid": "9B009394634B49C494329571BE832797",
-      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_9B009394634B49C494329571BE832797_lrg.png",
-      "startDate": "2026-05-15T00:00:00.0",
-      "endDate": "2026-05-17T23:59:59.0",
-      "challengeTarget": 0,
-      "currentValue": 0,
-      "badgeUnitId": 0,
-      "statusType": "ACTIVE"
-    },
-    {
       "badgeId": 3048,
       "challengeName": "May Ride to 100",
       "badgeUuid": "4B653898F2BC4271B559648205A92D3B",
@@ -7601,7 +7589,7 @@
       "startDate": "2026-05-01T00:00:00.0",
       "endDate": "2026-05-31T23:59:59.0",
       "challengeTarget": 14400.0,
-      "currentValue": 6905.98828125,
+      "currentValue": 11080.17529296875,
       "badgeUnitId": 7,
       "statusType": "ACTIVE"
     },
@@ -7613,7 +7601,7 @@
       "startDate": "2026-04-01T00:00:00.0",
       "endDate": "2026-06-30T23:59:59.0",
       "challengeTarget": 300000.0,
-      "currentValue": 279201.31982421875,
+      "currentValue": 294421.31982421875,
       "badgeUnitId": 1,
       "statusType": "ACTIVE"
     },
