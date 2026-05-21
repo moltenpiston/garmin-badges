@@ -1,6 +1,24 @@
 {
-  "lastUpdated": "2026-05-20T05:55:29.003866Z",
+  "lastUpdated": "2026-05-21T05:59:11.271269Z",
   "badges": [
+    {
+      "badgeId": 3061,
+      "badgeName": "May Gains",
+      "badgeUuid": "0F27D4D797C34AB6A94A6B37E3F773FA",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_0F27D4D797C34AB6A94A6B37E3F773FA_lrg.png",
+      "badgeEarnedDate": "2026-05-20T15:40:16.0",
+      "badgePoints": 1,
+      "badgeCategoryId": 4
+    },
+    {
+      "badgeId": 2734,
+      "badgeName": "Breakfast Club",
+      "badgeUuid": "EB02E97352EF4DD2BC17474EDE67BDAE",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_EB02E97352EF4DD2BC17474EDE67BDAE_lrg.png",
+      "badgeEarnedDate": "2026-05-20T08:38:27.754",
+      "badgePoints": 1,
+      "badgeCategoryId": 7
+    },
     {
       "badgeId": 1836,
       "badgeName": "Rise and Grind",
@@ -243,15 +261,6 @@
       "badgeEarnedDate": "2026-05-03T07:04:20.0",
       "badgePoints": 4,
       "badgeCategoryId": 4
-    },
-    {
-      "badgeId": 2734,
-      "badgeName": "Breakfast Club",
-      "badgeUuid": "EB02E97352EF4DD2BC17474EDE67BDAE",
-      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_EB02E97352EF4DD2BC17474EDE67BDAE_lrg.png",
-      "badgeEarnedDate": "2026-05-02T06:28:31.443",
-      "badgePoints": 1,
-      "badgeCategoryId": 7
     },
     {
       "badgeId": 3046,
@@ -7589,7 +7598,7 @@
       "startDate": "2026-05-01T00:00:00.0",
       "endDate": "2026-05-31T23:59:59.0",
       "challengeTarget": 14400.0,
-      "currentValue": 11080.17529296875,
+      "currentValue": 14400.0,
       "badgeUnitId": 7,
       "statusType": "ACTIVE"
     },
