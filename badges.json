@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-21T05:59:11.271269Z",
+  "lastUpdated": "2026-05-22T05:55:15.622042Z",
   "badges": [
     {
       "badgeId": 3061,
@@ -7538,7 +7538,7 @@
       "startDate": "2026-05-01T00:00:00.0",
       "endDate": "2026-05-31T23:59:59.0",
       "challengeTarget": 48280.3,
-      "currentValue": 29619.099609375,
+      "currentValue": 41348.2998046875,
       "badgeUnitId": 1,
       "statusType": "ACTIVE"
     },
@@ -7622,7 +7622,7 @@
       "startDate": "2026-04-01T00:00:00.0",
       "endDate": "2026-06-30T23:59:59.0",
       "challengeTarget": 146450.0,
-      "currentValue": 123245.419921875,
+      "currentValue": 134974.6201171875,
       "badgeUnitId": 1,
       "statusType": "ACTIVE"
     },
