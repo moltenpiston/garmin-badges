@@ -1,6 +1,24 @@
 {
-  "lastUpdated": "2026-05-23T05:29:37.522737Z",
+  "lastUpdated": "2026-05-24T05:51:01.653967Z",
   "badges": [
+    {
+      "badgeId": 3069,
+      "badgeName": "May Power Cycling",
+      "badgeUuid": "9E77619C2CA7462CA67376450CB02245",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_9E77619C2CA7462CA67376450CB02245_lrg.png",
+      "badgeEarnedDate": "2026-05-23T10:31:05.0",
+      "badgePoints": 4,
+      "badgeCategoryId": 4
+    },
+    {
+      "badgeId": 3009,
+      "badgeName": "2026 Running - Stage 2",
+      "badgeUuid": "D79C22D4A49B4FC9B40E092C0495222F",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_D79C22D4A49B4FC9B40E092C0495222F_lrg.png",
+      "badgeEarnedDate": "2026-05-23T08:32:12.0",
+      "badgePoints": 2,
+      "badgeCategoryId": 4
+    },
     {
       "badgeId": 3061,
       "badgeName": "May Gains",
@@ -7526,7 +7544,7 @@
       "startDate": "2026-05-01T00:00:00.0",
       "endDate": "2026-05-31T23:59:59.0",
       "challengeTarget": 72000.0,
-      "currentValue": 60600.33984375,
+      "currentValue": 67411.33984375,
       "badgeUnitId": 7,
       "statusType": "ACTIVE"
     },
@@ -7610,7 +7628,7 @@
       "startDate": "2026-04-01T00:00:00.0",
       "endDate": "2026-06-30T23:59:59.0",
       "challengeTarget": 300000.0,
-      "currentValue": 294421.31982421875,
+      "currentValue": 300000.0,
       "badgeUnitId": 1,
       "statusType": "ACTIVE"
     },
@@ -7660,18 +7678,6 @@
       "challengeTarget": 7.0,
       "currentValue": 0,
       "badgeUnitId": 4,
-      "statusType": "NOT_JOINED"
-    },
-    {
-      "badgeId": 3069,
-      "challengeName": "May Power Cycling",
-      "badgeUuid": "9E77619C2CA7462CA67376450CB02245",
-      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_9E77619C2CA7462CA67376450CB02245_lrg.png",
-      "startDate": "2026-05-01T00:00:00.0",
-      "endDate": "2026-05-31T23:59:59.0",
-      "challengeTarget": 14400.0,
-      "currentValue": 0,
-      "badgeUnitId": 7,
       "statusType": "NOT_JOINED"
     },
     {
