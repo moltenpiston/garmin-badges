@@ -1,6 +1,24 @@
 {
-  "lastUpdated": "2026-05-24T05:51:01.653967Z",
+  "lastUpdated": "2026-05-25T06:14:17.723770Z",
   "badges": [
+    {
+      "badgeId": 1836,
+      "badgeName": "Rise and Grind",
+      "badgeUuid": "DA851BC1BF9F454FB3BF26E92DB42441",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_DA851BC1BF9F454FB3BF26E92DB42441_lrg.png",
+      "badgeEarnedDate": "2026-05-25T04:49:25.0",
+      "badgePoints": 2,
+      "badgeCategoryId": 1
+    },
+    {
+      "badgeId": 3051,
+      "badgeName": "May Time to Ride",
+      "badgeUuid": "46C02BBE78DE44D5AC7F4E3D8DBD8292",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_46C02BBE78DE44D5AC7F4E3D8DBD8292_lrg.png",
+      "badgeEarnedDate": "2026-05-24T08:02:23.0",
+      "badgePoints": 1,
+      "badgeCategoryId": 4
+    },
     {
       "badgeId": 3069,
       "badgeName": "May Power Cycling",
@@ -36,15 +54,6 @@
       "badgeEarnedDate": "2026-05-20T08:38:27.754",
       "badgePoints": 1,
       "badgeCategoryId": 7
-    },
-    {
-      "badgeId": 1836,
-      "badgeName": "Rise and Grind",
-      "badgeUuid": "DA851BC1BF9F454FB3BF26E92DB42441",
-      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_DA851BC1BF9F454FB3BF26E92DB42441_lrg.png",
-      "badgeEarnedDate": "2026-05-19T04:03:33.0",
-      "badgePoints": 2,
-      "badgeCategoryId": 1
     },
     {
       "badgeId": 1822,
@@ -7472,7 +7481,7 @@
       "startDate": "2026-05-24T00:00:00.0",
       "endDate": "2026-05-30T23:59:59.0",
       "challengeTarget": 100000.0,
-      "currentValue": 0,
+      "currentValue": 37065.859375,
       "badgeUnitId": 1,
       "statusType": "ACTIVE"
     },
@@ -7544,7 +7553,7 @@
       "startDate": "2026-05-01T00:00:00.0",
       "endDate": "2026-05-31T23:59:59.0",
       "challengeTarget": 72000.0,
-      "currentValue": 67411.33984375,
+      "currentValue": 72000.0,
       "badgeUnitId": 7,
       "statusType": "ACTIVE"
     },
@@ -7556,7 +7565,7 @@
       "startDate": "2026-05-01T00:00:00.0",
       "endDate": "2026-05-31T23:59:59.0",
       "challengeTarget": 48280.3,
-      "currentValue": 41348.2998046875,
+      "currentValue": 45753.60986328125,
       "badgeUnitId": 1,
       "statusType": "ACTIVE"
     },
@@ -7640,7 +7649,7 @@
       "startDate": "2026-04-01T00:00:00.0",
       "endDate": "2026-06-30T23:59:59.0",
       "challengeTarget": 146450.0,
-      "currentValue": 134974.6201171875,
+      "currentValue": 139379.93017578125,
       "badgeUnitId": 1,
       "statusType": "ACTIVE"
     },
