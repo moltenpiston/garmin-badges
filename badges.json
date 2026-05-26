@@ -1,6 +1,24 @@
 {
-  "lastUpdated": "2026-05-25T06:14:17.723770Z",
+  "lastUpdated": "2026-05-26T05:56:03.085114Z",
   "badges": [
+    {
+      "badgeId": 3052,
+      "badgeName": "May Walking",
+      "badgeUuid": "78EB12897B5F43028EA39AD20BE9ACCD",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_78EB12897B5F43028EA39AD20BE9ACCD_lrg.png",
+      "badgeEarnedDate": "2026-05-25T17:47:01.0",
+      "badgePoints": 2,
+      "badgeCategoryId": 4
+    },
+    {
+      "badgeId": 3010,
+      "badgeName": "2026 Walking - Stage 2",
+      "badgeUuid": "EA4F8FAD05284C1F8A187BC3061D32D4",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_EA4F8FAD05284C1F8A187BC3061D32D4_lrg.png",
+      "badgeEarnedDate": "2026-05-25T17:47:01.0",
+      "badgePoints": 1,
+      "badgeCategoryId": 4
+    },
     {
       "badgeId": 1836,
       "badgeName": "Rise and Grind",
@@ -7481,7 +7499,7 @@
       "startDate": "2026-05-24T00:00:00.0",
       "endDate": "2026-05-30T23:59:59.0",
       "challengeTarget": 100000.0,
-      "currentValue": 37065.859375,
+      "currentValue": 62934.21875,
       "badgeUnitId": 1,
       "statusType": "ACTIVE"
     },
@@ -7565,7 +7583,7 @@
       "startDate": "2026-05-01T00:00:00.0",
       "endDate": "2026-05-31T23:59:59.0",
       "challengeTarget": 48280.3,
-      "currentValue": 45753.60986328125,
+      "currentValue": 48280.3,
       "badgeUnitId": 1,
       "statusType": "ACTIVE"
     },
@@ -7649,7 +7667,7 @@
       "startDate": "2026-04-01T00:00:00.0",
       "endDate": "2026-06-30T23:59:59.0",
       "challengeTarget": 146450.0,
-      "currentValue": 139379.93017578125,
+      "currentValue": 146450.0,
       "badgeUnitId": 1,
       "statusType": "ACTIVE"
     },
