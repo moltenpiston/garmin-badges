@@ -1,6 +1,24 @@
 {
-  "lastUpdated": "2026-05-29T06:01:42.690575Z",
+  "lastUpdated": "2026-05-30T05:38:22.379701Z",
   "badges": [
+    {
+      "badgeId": 3048,
+      "badgeName": "May Ride to 100",
+      "badgeUuid": "4B653898F2BC4271B559648205A92D3B",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_4B653898F2BC4271B559648205A92D3B_lrg.png",
+      "badgeEarnedDate": "2026-05-29T16:21:08.0",
+      "badgePoints": 2,
+      "badgeCategoryId": 4
+    },
+    {
+      "badgeId": 3062,
+      "badgeName": "May Weekend Walking",
+      "badgeUuid": "B8C7835602724C4CAE05DF2606153B20",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_B8C7835602724C4CAE05DF2606153B20_lrg.png",
+      "badgeEarnedDate": "2026-05-29T04:02:32.0",
+      "badgePoints": 1,
+      "badgeCategoryId": 4
+    },
     {
       "badgeId": 3052,
       "badgeName": "May Walking",
@@ -7499,7 +7517,7 @@
       "startDate": "2026-05-24T00:00:00.0",
       "endDate": "2026-05-30T23:59:59.0",
       "challengeTarget": 100000.0,
-      "currentValue": 62934.21875,
+      "currentValue": 100000.0,
       "badgeUnitId": 1,
       "statusType": "ACTIVE"
     },
