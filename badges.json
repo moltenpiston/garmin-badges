@@ -1,6 +1,24 @@
 {
-  "lastUpdated": "2026-06-02T06:25:47.876432Z",
+  "lastUpdated": "2026-06-03T06:42:14.874855Z",
   "badges": [
+    {
+      "badgeId": 3090,
+      "badgeName": "June Photo Share",
+      "badgeUuid": "35C2EE248D6A42278D7B98859191B350",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_35C2EE248D6A42278D7B98859191B350_lrg.png",
+      "badgeEarnedDate": "2026-06-02T18:49:08.29",
+      "badgePoints": 1,
+      "badgeCategoryId": 4
+    },
+    {
+      "badgeId": 3091,
+      "badgeName": "June Likes",
+      "badgeUuid": "BB150748FAC44339941404D4F4D36089",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_BB150748FAC44339941404D4F4D36089_lrg.png",
+      "badgeEarnedDate": "2026-06-02T07:24:56.793",
+      "badgePoints": 1,
+      "badgeCategoryId": 4
+    },
     {
       "badgeId": 3099,
       "badgeName": "June 15K",
@@ -7580,7 +7598,7 @@
       "startDate": "2026-06-01T00:00:00.0",
       "endDate": "2026-06-14T23:59:59.0",
       "challengeTarget": 100000.0,
-      "currentValue": 21744.0,
+      "currentValue": 51247.0,
       "badgeUnitId": 5,
       "statusType": "ACTIVE"
     },
@@ -7628,7 +7646,7 @@
       "startDate": "2026-06-01T00:00:00.0",
       "endDate": "2026-06-30T23:59:59.0",
       "challengeTarget": 3.0,
-      "currentValue": 1.0,
+      "currentValue": 3.0,
       "badgeUnitId": 3,
       "statusType": "ACTIVE"
     },
@@ -7640,7 +7658,7 @@
       "startDate": "2026-06-01T00:00:00.0",
       "endDate": "2026-06-30T23:59:59.0",
       "challengeTarget": 25.0,
-      "currentValue": 20.0,
+      "currentValue": 25.0,
       "badgeUnitId": 11,
       "statusType": "ACTIVE"
     },
@@ -7652,7 +7670,7 @@
       "startDate": "2026-06-01T00:00:00.0",
       "endDate": "2026-06-30T23:59:59.0",
       "challengeTarget": 54000.0,
-      "currentValue": 1233.5799560546875,
+      "currentValue": 3096.3699951171875,
       "badgeUnitId": 7,
       "statusType": "ACTIVE"
     },
@@ -7664,7 +7682,7 @@
       "startDate": "2026-06-01T00:00:00.0",
       "endDate": "2026-06-30T23:59:59.0",
       "challengeTarget": 72000.0,
-      "currentValue": 0,
+      "currentValue": 8057.0,
       "badgeUnitId": 7,
       "statusType": "ACTIVE"
     },
@@ -7688,7 +7706,7 @@
       "startDate": "2026-06-01T00:00:00.0",
       "endDate": "2026-06-30T23:59:59.0",
       "challengeTarget": 300000.0,
-      "currentValue": 21744.0,
+      "currentValue": 51247.0,
       "badgeUnitId": 5,
       "statusType": "ACTIVE"
     },
@@ -7724,7 +7742,7 @@
       "startDate": "2026-06-01T00:00:00.0",
       "endDate": "2026-06-30T23:59:59.0",
       "challengeTarget": 20.0,
-      "currentValue": 3.0,
+      "currentValue": 6.0,
       "badgeUnitId": 3,
       "statusType": "ACTIVE"
     },
@@ -7748,7 +7766,7 @@
       "startDate": "2026-06-01T00:00:00.0",
       "endDate": "2026-06-30T23:59:59.0",
       "challengeTarget": 400000.0,
-      "currentValue": 0,
+      "currentValue": 61770.0,
       "badgeUnitId": 1,
       "statusType": "ACTIVE"
     },
