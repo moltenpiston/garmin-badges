@@ -1,6 +1,33 @@
 {
-  "lastUpdated": "2026-06-03T06:42:14.874855Z",
+  "lastUpdated": "2026-06-04T06:26:05.870789Z",
   "badges": [
+    {
+      "badgeId": 1823,
+      "badgeName": "Sleep Streak",
+      "badgeUuid": "71CC5F04D0664183B0CAED3B6CF27031",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_71CC5F04D0664183B0CAED3B6CF27031_lrg.png",
+      "badgeEarnedDate": "2026-06-04T04:04:05.416",
+      "badgePoints": 4,
+      "badgeCategoryId": 7
+    },
+    {
+      "badgeId": 2894,
+      "badgeName": "Global Running Day 2026",
+      "badgeUuid": "CF43F8C36B7A45CBBFF744B0EAE74142",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_CF43F8C36B7A45CBBFF744B0EAE74142_lrg.png",
+      "badgeEarnedDate": "2026-06-03T16:21:00.0",
+      "badgePoints": 1,
+      "badgeCategoryId": 1
+    },
+    {
+      "badgeId": 2893,
+      "badgeName": "World Bicycle Day 2026",
+      "badgeUuid": "6E89EE69D7914C6098EE1DE313C3E536",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_6E89EE69D7914C6098EE1DE313C3E536_lrg.png",
+      "badgeEarnedDate": "2026-06-03T17:26:20.0",
+      "badgePoints": 1,
+      "badgeCategoryId": 3
+    },
     {
       "badgeId": 3090,
       "badgeName": "June Photo Share",
@@ -756,15 +783,6 @@
       "badgeEarnedDate": "2026-03-26T05:49:05.0",
       "badgePoints": 2,
       "badgeCategoryId": 4
-    },
-    {
-      "badgeId": 1823,
-      "badgeName": "Sleep Streak",
-      "badgeUuid": "71CC5F04D0664183B0CAED3B6CF27031",
-      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_71CC5F04D0664183B0CAED3B6CF27031_lrg.png",
-      "badgeEarnedDate": "2026-03-25T05:58:34.661",
-      "badgePoints": 4,
-      "badgeCategoryId": 7
     },
     {
       "badgeId": 2829,
@@ -7598,7 +7616,7 @@
       "startDate": "2026-06-01T00:00:00.0",
       "endDate": "2026-06-14T23:59:59.0",
       "challengeTarget": 100000.0,
-      "currentValue": 51247.0,
+      "currentValue": 68935.0,
       "badgeUnitId": 5,
       "statusType": "ACTIVE"
     },
@@ -7682,7 +7700,7 @@
       "startDate": "2026-06-01T00:00:00.0",
       "endDate": "2026-06-30T23:59:59.0",
       "challengeTarget": 72000.0,
-      "currentValue": 8057.0,
+      "currentValue": 12629.0,
       "badgeUnitId": 7,
       "statusType": "ACTIVE"
     },
@@ -7706,7 +7724,7 @@
       "startDate": "2026-06-01T00:00:00.0",
       "endDate": "2026-06-30T23:59:59.0",
       "challengeTarget": 300000.0,
-      "currentValue": 51247.0,
+      "currentValue": 68935.0,
       "badgeUnitId": 5,
       "statusType": "ACTIVE"
     },
@@ -7730,7 +7748,7 @@
       "startDate": "2026-06-01T00:00:00.0",
       "endDate": "2026-06-30T23:59:59.0",
       "challengeTarget": 80467.2,
-      "currentValue": 20662.23046875,
+      "currentValue": 34412.23046875,
       "badgeUnitId": 1,
       "statusType": "ACTIVE"
     },
@@ -7742,7 +7760,7 @@
       "startDate": "2026-06-01T00:00:00.0",
       "endDate": "2026-06-30T23:59:59.0",
       "challengeTarget": 20.0,
-      "currentValue": 6.0,
+      "currentValue": 10.0,
       "badgeUnitId": 3,
       "statusType": "ACTIVE"
     },
@@ -7766,7 +7784,7 @@
       "startDate": "2026-06-01T00:00:00.0",
       "endDate": "2026-06-30T23:59:59.0",
       "challengeTarget": 400000.0,
-      "currentValue": 61770.0,
+      "currentValue": 97842.55859375,
       "badgeUnitId": 1,
       "statusType": "ACTIVE"
     },
