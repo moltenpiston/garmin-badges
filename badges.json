@@ -1,6 +1,33 @@
 {
-  "lastUpdated": "2026-06-04T06:26:05.870789Z",
+  "lastUpdated": "2026-06-05T06:09:46.112605Z",
   "badges": [
+    {
+      "badgeId": 2895,
+      "badgeName": "World Environment Day 2026",
+      "badgeUuid": "C118FFD159C64D51A75253E8B6C4483A",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_C118FFD159C64D51A75253E8B6C4483A_lrg.png",
+      "badgeEarnedDate": "2026-06-05T04:23:03.0",
+      "badgePoints": 1,
+      "badgeCategoryId": 1
+    },
+    {
+      "badgeId": 1835,
+      "badgeName": "30 for 30",
+      "badgeUuid": "76D974696AFD4472AA843974863D3CD3",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_76D974696AFD4472AA843974863D3CD3_lrg.png",
+      "badgeEarnedDate": "2026-06-05T04:23:03.0",
+      "badgePoints": 2,
+      "badgeCategoryId": 1
+    },
+    {
+      "badgeId": 3096,
+      "badgeName": "June Weekend Walking",
+      "badgeUuid": "94C1D1FF93084BD58FA91FCB43810A59",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_94C1D1FF93084BD58FA91FCB43810A59_lrg.png",
+      "badgeEarnedDate": "2026-06-05T04:23:03.0",
+      "badgePoints": 1,
+      "badgeCategoryId": 4
+    },
     {
       "badgeId": 1823,
       "badgeName": "Sleep Streak",
@@ -360,15 +387,6 @@
       "badgeEarnedDate": "2026-05-07T21:59:59.0",
       "badgePoints": 2,
       "badgeCategoryId": 4
-    },
-    {
-      "badgeId": 1835,
-      "badgeName": "30 for 30",
-      "badgeUuid": "76D974696AFD4472AA843974863D3CD3",
-      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_76D974696AFD4472AA843974863D3CD3_lrg.png",
-      "badgeEarnedDate": "2026-05-07T04:07:10.0",
-      "badgePoints": 2,
-      "badgeCategoryId": 1
     },
     {
       "badgeId": 3011,
@@ -7616,7 +7634,7 @@
       "startDate": "2026-06-01T00:00:00.0",
       "endDate": "2026-06-14T23:59:59.0",
       "challengeTarget": 100000.0,
-      "currentValue": 68935.0,
+      "currentValue": 87767.0,
       "badgeUnitId": 5,
       "statusType": "ACTIVE"
     },
@@ -7688,7 +7706,7 @@
       "startDate": "2026-06-01T00:00:00.0",
       "endDate": "2026-06-30T23:59:59.0",
       "challengeTarget": 54000.0,
-      "currentValue": 3096.3699951171875,
+      "currentValue": 5966.5479736328125,
       "badgeUnitId": 7,
       "statusType": "ACTIVE"
     },
@@ -7724,7 +7742,7 @@
       "startDate": "2026-06-01T00:00:00.0",
       "endDate": "2026-06-30T23:59:59.0",
       "challengeTarget": 300000.0,
-      "currentValue": 68935.0,
+      "currentValue": 87767.0,
       "badgeUnitId": 5,
       "statusType": "ACTIVE"
     },
@@ -7760,7 +7778,7 @@
       "startDate": "2026-06-01T00:00:00.0",
       "endDate": "2026-06-30T23:59:59.0",
       "challengeTarget": 20.0,
-      "currentValue": 10.0,
+      "currentValue": 11.0,
       "badgeUnitId": 3,
       "statusType": "ACTIVE"
     },
