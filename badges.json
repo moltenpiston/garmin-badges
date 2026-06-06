@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-05T06:09:46.112605Z",
+  "lastUpdated": "2026-06-06T05:44:08.893585Z",
   "badges": [
     {
       "badgeId": 2895,
@@ -7634,7 +7634,7 @@
       "startDate": "2026-06-01T00:00:00.0",
       "endDate": "2026-06-14T23:59:59.0",
       "challengeTarget": 100000.0,
-      "currentValue": 87767.0,
+      "currentValue": 97839.0,
       "badgeUnitId": 5,
       "statusType": "ACTIVE"
     },
@@ -7742,7 +7742,7 @@
       "startDate": "2026-06-01T00:00:00.0",
       "endDate": "2026-06-30T23:59:59.0",
       "challengeTarget": 300000.0,
-      "currentValue": 87767.0,
+      "currentValue": 97839.0,
       "badgeUnitId": 5,
       "statusType": "ACTIVE"
     },
@@ -7778,7 +7778,7 @@
       "startDate": "2026-06-01T00:00:00.0",
       "endDate": "2026-06-30T23:59:59.0",
       "challengeTarget": 20.0,
-      "currentValue": 11.0,
+      "currentValue": 12.0,
       "badgeUnitId": 3,
       "statusType": "ACTIVE"
     },
@@ -7790,7 +7790,7 @@
       "startDate": "2026-06-01T00:00:00.0",
       "endDate": "2026-06-30T23:59:59.0",
       "challengeTarget": 14400.0,
-      "currentValue": 2090.0,
+      "currentValue": 4288.885986328125,
       "badgeUnitId": 7,
       "statusType": "ACTIVE"
     },
