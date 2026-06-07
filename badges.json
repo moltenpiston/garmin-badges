@@ -1,6 +1,42 @@
 {
-  "lastUpdated": "2026-06-06T05:44:08.893585Z",
+  "lastUpdated": "2026-06-07T06:10:51.457230Z",
   "badges": [
+    {
+      "badgeId": 3080,
+      "badgeName": "June Battery Booster",
+      "badgeUuid": "70BE5A6D2A6F43FA8DAFF1A0A3480AC8",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_70BE5A6D2A6F43FA8DAFF1A0A3480AC8_lrg.png",
+      "badgeEarnedDate": "2026-06-07T04:15:45.869",
+      "badgePoints": 2,
+      "badgeCategoryId": 4
+    },
+    {
+      "badgeId": 3088,
+      "badgeName": "June Running Climbs",
+      "badgeUuid": "90BC9C48FEDD42379036A163113886E2",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_90BC9C48FEDD42379036A163113886E2_lrg.png",
+      "badgeEarnedDate": "2026-06-06T04:15:21.0",
+      "badgePoints": 4,
+      "badgeCategoryId": 4
+    },
+    {
+      "badgeId": 3098,
+      "badgeName": "June Weekend 5K",
+      "badgeUuid": "B2D00EEE35224087B6E985D77926EE04",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_B2D00EEE35224087B6E985D77926EE04_lrg.png",
+      "badgeEarnedDate": "2026-06-06T04:15:21.0",
+      "badgePoints": 1,
+      "badgeCategoryId": 4
+    },
+    {
+      "badgeId": 3108,
+      "badgeName": "Step into June",
+      "badgeUuid": "2A83B9ED60774DC4BFFA82A8D392D331",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_2A83B9ED60774DC4BFFA82A8D392D331_lrg.png",
+      "badgeEarnedDate": "2026-06-06T06:14:41.440",
+      "badgePoints": 1,
+      "badgeCategoryId": 4
+    },
     {
       "badgeId": 2895,
       "badgeName": "World Environment Day 2026",
@@ -7634,7 +7670,7 @@
       "startDate": "2026-06-01T00:00:00.0",
       "endDate": "2026-06-14T23:59:59.0",
       "challengeTarget": 100000.0,
-      "currentValue": 97839.0,
+      "currentValue": 100000.0,
       "badgeUnitId": 5,
       "statusType": "ACTIVE"
     },
@@ -7718,7 +7754,7 @@
       "startDate": "2026-06-01T00:00:00.0",
       "endDate": "2026-06-30T23:59:59.0",
       "challengeTarget": 72000.0,
-      "currentValue": 12629.0,
+      "currentValue": 19856.89697265625,
       "badgeUnitId": 7,
       "statusType": "ACTIVE"
     },
@@ -7742,7 +7778,7 @@
       "startDate": "2026-06-01T00:00:00.0",
       "endDate": "2026-06-30T23:59:59.0",
       "challengeTarget": 300000.0,
-      "currentValue": 97839.0,
+      "currentValue": 116780.0,
       "badgeUnitId": 5,
       "statusType": "ACTIVE"
     },
@@ -7766,7 +7802,7 @@
       "startDate": "2026-06-01T00:00:00.0",
       "endDate": "2026-06-30T23:59:59.0",
       "challengeTarget": 80467.2,
-      "currentValue": 34412.23046875,
+      "currentValue": 70534.3515625,
       "badgeUnitId": 1,
       "statusType": "ACTIVE"
     },
@@ -7778,7 +7814,7 @@
       "startDate": "2026-06-01T00:00:00.0",
       "endDate": "2026-06-30T23:59:59.0",
       "challengeTarget": 20.0,
-      "currentValue": 12.0,
+      "currentValue": 14.0,
       "badgeUnitId": 3,
       "statusType": "ACTIVE"
     },
@@ -7802,7 +7838,7 @@
       "startDate": "2026-06-01T00:00:00.0",
       "endDate": "2026-06-30T23:59:59.0",
       "challengeTarget": 400000.0,
-      "currentValue": 97842.55859375,
+      "currentValue": 127214.658203125,
       "badgeUnitId": 1,
       "statusType": "ACTIVE"
     },
@@ -7876,18 +7912,6 @@
       "challengeTarget": 8000.0,
       "currentValue": 0,
       "badgeUnitId": 9,
-      "statusType": "NOT_JOINED"
-    },
-    {
-      "badgeId": 3080,
-      "challengeName": "June Battery Booster",
-      "badgeUuid": "70BE5A6D2A6F43FA8DAFF1A0A3480AC8",
-      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_70BE5A6D2A6F43FA8DAFF1A0A3480AC8_lrg.png",
-      "startDate": "2026-06-01T00:00:00.0",
-      "endDate": "2026-06-30T23:59:59.0",
-      "challengeTarget": 7.0,
-      "currentValue": 0,
-      "badgeUnitId": 4,
       "statusType": "NOT_JOINED"
     },
     {
@@ -7970,18 +7994,6 @@
       "startDate": "2026-06-01T00:00:00.0",
       "endDate": "2026-06-30T23:59:59.0",
       "challengeTarget": 1000.0,
-      "currentValue": 0,
-      "badgeUnitId": 2,
-      "statusType": "NOT_JOINED"
-    },
-    {
-      "badgeId": 3088,
-      "challengeName": "June Running Climbs",
-      "badgeUuid": "90BC9C48FEDD42379036A163113886E2",
-      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_90BC9C48FEDD42379036A163113886E2_lrg.png",
-      "startDate": "2026-06-01T00:00:00.0",
-      "endDate": "2026-06-30T23:59:59.0",
-      "challengeTarget": 500.0,
       "currentValue": 0,
       "badgeUnitId": 2,
       "statusType": "NOT_JOINED"
