@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-08T06:26:04.800067Z",
+  "lastUpdated": "2026-06-09T05:57:15.684912Z",
   "badges": [
     {
       "badgeId": 3082,
@@ -7636,30 +7636,6 @@
   ],
   "challenges": [
     {
-      "badgeId": 3096,
-      "challengeName": "June Weekend Walking",
-      "badgeUuid": "94C1D1FF93084BD58FA91FCB43810A59",
-      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_94C1D1FF93084BD58FA91FCB43810A59_lrg.png",
-      "startDate": "2026-06-05T00:00:00.0",
-      "endDate": "2026-06-07T23:59:59.0",
-      "challengeTarget": 0,
-      "currentValue": 0,
-      "badgeUnitId": 0,
-      "statusType": "ACTIVE"
-    },
-    {
-      "badgeId": 3098,
-      "challengeName": "June Weekend 5K",
-      "badgeUuid": "B2D00EEE35224087B6E985D77926EE04",
-      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_B2D00EEE35224087B6E985D77926EE04_lrg.png",
-      "startDate": "2026-06-05T00:00:00.0",
-      "endDate": "2026-06-07T23:59:59.0",
-      "challengeTarget": 0,
-      "currentValue": 0,
-      "badgeUnitId": 0,
-      "statusType": "ACTIVE"
-    },
-    {
       "badgeId": 3100,
       "challengeName": "June Weekend 40K",
       "badgeUuid": "BD354269C8A340B6928801083F990D7C",
@@ -7787,7 +7763,7 @@
       "startDate": "2026-06-01T00:00:00.0",
       "endDate": "2026-06-30T23:59:59.0",
       "challengeTarget": 300000.0,
-      "currentValue": 138860.0,
+      "currentValue": 156314.0,
       "badgeUnitId": 5,
       "statusType": "ACTIVE"
     },
