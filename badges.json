@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-13T06:05:42.383482Z",
+  "lastUpdated": "2026-06-14T06:23:30.361996Z",
   "badges": [
     {
       "badgeId": 3082,
@@ -7862,18 +7862,6 @@
       "currentValue": 675000.0,
       "badgeUnitId": 1,
       "statusType": "ACTIVE"
-    },
-    {
-      "badgeId": 3092,
-      "challengeName": "June Swim Week",
-      "badgeUuid": "E927CB7032684ADBAEB57A43EB4B7C88",
-      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_E927CB7032684ADBAEB57A43EB4B7C88_lrg.png",
-      "startDate": "2026-06-07T00:00:00.0",
-      "endDate": "2026-06-13T23:59:59.0",
-      "challengeTarget": 1000.0,
-      "currentValue": 0,
-      "badgeUnitId": 2,
-      "statusType": "NOT_JOINED"
     },
     {
       "badgeId": 3079,
