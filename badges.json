@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-25T05:54:46.748434Z",
+  "lastUpdated": "2026-06-26T05:58:23.895341Z",
   "badges": [
     {
       "badgeId": 3082,
@@ -8236,6 +8236,18 @@
       "statusType": "NOT_JOINED"
     },
     {
+      "badgeId": 3142,
+      "challengeName": "Therabody Earn Your Recovery",
+      "badgeUuid": "11D3F2A6170E42F39999C0388F8B7359",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_11D3F2A6170E42F39999C0388F8B7359_lrg.png",
+      "startDate": "2026-07-01T00:00:00.0",
+      "endDate": "2026-07-31T23:59:59.0",
+      "challengeTarget": 10.0,
+      "currentValue": 0,
+      "badgeUnitId": 3,
+      "statusType": "NOT_JOINED"
+    },
+    {
       "badgeId": 3110,
       "challengeName": "Intense July",
       "badgeUuid": "671022110A4F457B8FE43C2338D8B766",
@@ -8437,6 +8449,18 @@
       "challengeTarget": 5.0,
       "currentValue": 0,
       "badgeUnitId": null,
+      "statusType": "NOT_JOINED"
+    },
+    {
+      "badgeId": 2732,
+      "challengeName": "Garmin Coach Graduate ",
+      "badgeUuid": "3BDD8B055FF04A2AAE12CE16E3E21498",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_3BDD8B055FF04A2AAE12CE16E3E21498_lrg.png",
+      "startDate": "2025-11-01T00:00:00.0",
+      "endDate": null,
+      "challengeTarget": 10.0,
+      "currentValue": 0,
+      "badgeUnitId": 3,
       "statusType": "NOT_JOINED"
     },
     {
