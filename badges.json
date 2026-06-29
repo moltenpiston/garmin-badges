@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-28T06:04:48.170523Z",
+  "lastUpdated": "2026-06-29T06:25:06.422467Z",
   "badges": [
     {
       "badgeId": 3082,
@@ -7636,18 +7636,6 @@
   ],
   "challenges": [
     {
-      "badgeId": 3097,
-      "challengeName": "June Ride to 100",
-      "badgeUuid": "6F1AEC51143C4CBF9CDC805B290F5F5C",
-      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_6F1AEC51143C4CBF9CDC805B290F5F5C_lrg.png",
-      "startDate": "2026-06-21T00:00:00.0",
-      "endDate": "2026-06-27T23:59:59.0",
-      "challengeTarget": 100000.0,
-      "currentValue": 0,
-      "badgeUnitId": 1,
-      "statusType": "ACTIVE"
-    },
-    {
       "badgeId": 3093,
       "challengeName": "June Weekend 10K",
       "badgeUuid": "8A81F263CF434281B9CA117AA9492F42",
@@ -7669,6 +7657,54 @@
       "challengeTarget": 0,
       "currentValue": 0,
       "badgeUnitId": 0,
+      "statusType": "ACTIVE"
+    },
+    {
+      "badgeId": 3090,
+      "challengeName": "June Photo Share",
+      "badgeUuid": "35C2EE248D6A42278D7B98859191B350",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_35C2EE248D6A42278D7B98859191B350_lrg.png",
+      "startDate": "2026-06-01T00:00:00.0",
+      "endDate": "2026-06-30T23:59:59.0",
+      "challengeTarget": 3.0,
+      "currentValue": 3.0,
+      "badgeUnitId": 3,
+      "statusType": "ACTIVE"
+    },
+    {
+      "badgeId": 3091,
+      "challengeName": "June Likes",
+      "badgeUuid": "BB150748FAC44339941404D4F4D36089",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_BB150748FAC44339941404D4F4D36089_lrg.png",
+      "startDate": "2026-06-01T00:00:00.0",
+      "endDate": "2026-06-30T23:59:59.0",
+      "challengeTarget": 25.0,
+      "currentValue": 25.0,
+      "badgeUnitId": 11,
+      "statusType": "ACTIVE"
+    },
+    {
+      "badgeId": 3094,
+      "challengeName": "June Time to Walk",
+      "badgeUuid": "3CA72F711DC24775B91D2202AAEADECB",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_3CA72F711DC24775B91D2202AAEADECB_lrg.png",
+      "startDate": "2026-06-01T00:00:00.0",
+      "endDate": "2026-06-30T23:59:59.0",
+      "challengeTarget": 54000.0,
+      "currentValue": 5966.5479736328125,
+      "badgeUnitId": 7,
+      "statusType": "ACTIVE"
+    },
+    {
+      "badgeId": 3095,
+      "challengeName": "June Time to Ride",
+      "badgeUuid": "5B88B7B4C8724196A8F2ABE4FA0948FC",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_5B88B7B4C8724196A8F2ABE4FA0948FC_lrg.png",
+      "startDate": "2026-06-01T00:00:00.0",
+      "endDate": "2026-06-30T23:59:59.0",
+      "challengeTarget": 72000.0,
+      "currentValue": 28726.84228515625,
+      "badgeUnitId": 7,
       "statusType": "ACTIVE"
     },
     {
@@ -7756,54 +7792,6 @@
       "statusType": "ACTIVE"
     },
     {
-      "badgeId": 3090,
-      "challengeName": "June Photo Share",
-      "badgeUuid": "35C2EE248D6A42278D7B98859191B350",
-      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_35C2EE248D6A42278D7B98859191B350_lrg.png",
-      "startDate": "2026-06-01T00:00:00.0",
-      "endDate": "2026-06-30T23:59:59.0",
-      "challengeTarget": 3.0,
-      "currentValue": 3.0,
-      "badgeUnitId": 3,
-      "statusType": "ACTIVE"
-    },
-    {
-      "badgeId": 3091,
-      "challengeName": "June Likes",
-      "badgeUuid": "BB150748FAC44339941404D4F4D36089",
-      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_BB150748FAC44339941404D4F4D36089_lrg.png",
-      "startDate": "2026-06-01T00:00:00.0",
-      "endDate": "2026-06-30T23:59:59.0",
-      "challengeTarget": 25.0,
-      "currentValue": 25.0,
-      "badgeUnitId": 11,
-      "statusType": "ACTIVE"
-    },
-    {
-      "badgeId": 3094,
-      "challengeName": "June Time to Walk",
-      "badgeUuid": "3CA72F711DC24775B91D2202AAEADECB",
-      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_3CA72F711DC24775B91D2202AAEADECB_lrg.png",
-      "startDate": "2026-06-01T00:00:00.0",
-      "endDate": "2026-06-30T23:59:59.0",
-      "challengeTarget": 54000.0,
-      "currentValue": 5966.5479736328125,
-      "badgeUnitId": 7,
-      "statusType": "ACTIVE"
-    },
-    {
-      "badgeId": 3095,
-      "challengeName": "June Time to Ride",
-      "badgeUuid": "5B88B7B4C8724196A8F2ABE4FA0948FC",
-      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_5B88B7B4C8724196A8F2ABE4FA0948FC_lrg.png",
-      "startDate": "2026-06-01T00:00:00.0",
-      "endDate": "2026-06-30T23:59:59.0",
-      "challengeTarget": 72000.0,
-      "currentValue": 28726.84228515625,
-      "badgeUnitId": 7,
-      "statusType": "ACTIVE"
-    },
-    {
       "badgeId": 3009,
       "challengeName": "2026 Running - Stage 2",
       "badgeUuid": "D79C22D4A49B4FC9B40E092C0495222F",
@@ -7838,18 +7826,6 @@
       "currentValue": 675000.0,
       "badgeUnitId": 1,
       "statusType": "ACTIVE"
-    },
-    {
-      "badgeId": 3079,
-      "challengeName": "Intense June",
-      "badgeUuid": "8E4C94C0B4174B0DA7FA2F025FA72446",
-      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_8E4C94C0B4174B0DA7FA2F025FA72446_lrg.png",
-      "startDate": "2026-06-01T00:00:00.0",
-      "endDate": "2026-06-28T23:59:59.0",
-      "challengeTarget": 2.0,
-      "currentValue": 0,
-      "badgeUnitId": 10,
-      "statusType": "NOT_JOINED"
     },
     {
       "badgeId": 3078,
