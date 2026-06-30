@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-29T06:25:06.422467Z",
+  "lastUpdated": "2026-06-30T05:59:33.676082Z",
   "badges": [
     {
       "badgeId": 3082,
@@ -7635,30 +7635,6 @@
     }
   ],
   "challenges": [
-    {
-      "badgeId": 3093,
-      "challengeName": "June Weekend 10K",
-      "badgeUuid": "8A81F263CF434281B9CA117AA9492F42",
-      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_8A81F263CF434281B9CA117AA9492F42_lrg.png",
-      "startDate": "2026-06-26T00:00:00.0",
-      "endDate": "2026-06-28T23:59:59.0",
-      "challengeTarget": 0,
-      "currentValue": 0,
-      "badgeUnitId": 0,
-      "statusType": "ACTIVE"
-    },
-    {
-      "badgeId": 3089,
-      "challengeName": "June Steps Podium",
-      "badgeUuid": "8F3931D790164B21BC55C51F271CB327",
-      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_8F3931D790164B21BC55C51F271CB327_lrg.png",
-      "startDate": "2026-06-01T00:00:00.0",
-      "endDate": "2026-06-28T23:59:59.0",
-      "challengeTarget": 0,
-      "currentValue": 0,
-      "badgeUnitId": 0,
-      "statusType": "ACTIVE"
-    },
     {
       "badgeId": 3090,
       "challengeName": "June Photo Share",
