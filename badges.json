@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-08T04:54:48.607395Z",
+  "lastUpdated": "2026-07-09T05:51:37.697739Z",
   "badges": [
     {
       "badgeId": 3082,
@@ -7921,6 +7921,18 @@
       "challengeTarget": 14400.0,
       "currentValue": 0,
       "badgeUnitId": 7,
+      "statusType": "NOT_JOINED"
+    },
+    {
+      "badgeId": 3142,
+      "challengeName": "Therabody Earn Your Recovery",
+      "badgeUuid": "11D3F2A6170E42F39999C0388F8B7359",
+      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_11D3F2A6170E42F39999C0388F8B7359_lrg.png",
+      "startDate": "2026-07-01T00:00:00.0",
+      "endDate": "2026-07-31T23:59:59.0",
+      "challengeTarget": 10.0,
+      "currentValue": 0,
+      "badgeUnitId": 3,
       "statusType": "NOT_JOINED"
     },
     {
