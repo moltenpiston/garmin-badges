@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-25T04:51:46.196950Z",
+  "lastUpdated": "2026-07-26T05:16:42.509119Z",
   "badges": [
     {
       "badgeId": 3082,
@@ -7635,30 +7635,6 @@
     }
   ],
   "challenges": [
-    {
-      "badgeId": 3133,
-      "challengeName": "July Ride to 200",
-      "badgeUuid": "C15539914C9C4AADA19237D12C93EC49",
-      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_C15539914C9C4AADA19237D12C93EC49_lrg.png",
-      "startDate": "2026-07-12T00:00:00.0",
-      "endDate": "2026-07-25T23:59:59.0",
-      "challengeTarget": 200000.0,
-      "currentValue": 0,
-      "badgeUnitId": 1,
-      "statusType": "NOT_JOINED"
-    },
-    {
-      "badgeId": 3136,
-      "challengeName": "July Swim Week",
-      "badgeUuid": "063388AB4F2C4FDDA840E39283BAFA6D",
-      "imageUrl": "https://connect.garmin.com/images/badges/xxhdpi/badge_063388AB4F2C4FDDA840E39283BAFA6D_lrg.png",
-      "startDate": "2026-07-19T00:00:00.0",
-      "endDate": "2026-07-25T23:59:59.0",
-      "challengeTarget": 1000.0,
-      "currentValue": 0,
-      "badgeUnitId": 12,
-      "statusType": "NOT_JOINED"
-    },
     {
       "badgeId": 3109,
       "challengeName": "July Calorie Burn",
